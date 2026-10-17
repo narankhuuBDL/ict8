@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICT 8th Grade - Narankhuu B</title>
+  <title>ICT 8th Grade - ICT Narankhuu B</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     :root {
       --bg: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-bg: rgba(30, 41, 59, 0.75);
       --accent-blue: #38bdf8;
       --accent-purple: #a855f7;
       --accent-green: #22c55e;
@@ -20,300 +20,196 @@
       --border: rgba(255, 255, 255, 0.12);
     }
 
-    /* THEME STYLES */
-    body[data-theme="purple"] { --bg: #1e102a; --card-bg: rgba(45, 20, 65, 0.7); --border: rgba(168, 85, 247, 0.25); --text: #faf5ff; }
-    body[data-theme="ocean"] { --bg: #031b33; --card-bg: rgba(10, 40, 75, 0.7); --border: rgba(56, 189, 248, 0.25); --text: #f0f9ff; }
-    body[data-theme="forest"] { --bg: #062319; --card-bg: rgba(12, 50, 36, 0.7); --border: rgba(34, 197, 94, 0.25); --text: #f0fdf4; }
-    body[data-theme="light"] { --bg: #f1f5f9; --card-bg: rgba(255, 255, 255, 0.85); --border: rgba(0, 0, 0, 0.12); --text: #0f172a; --text-muted: #64748b; }
+    body[data-theme="purple"] { --bg: #1e102a; --card-bg: rgba(45, 20, 65, 0.75); --border: rgba(168, 85, 247, 0.25); --text: #faf5ff; }
+    body[data-theme="ocean"] { --bg: #031b33; --card-bg: rgba(10, 40, 75, 0.75); --border: rgba(56, 189, 248, 0.25); --text: #f0f9ff; }
+    body[data-theme="forest"] { --bg: #062319; --card-bg: rgba(12, 50, 36, 0.75); --border: rgba(34, 197, 94, 0.25); --text: #f0fdf4; }
+    body[data-theme="light"] { --bg: #f1f5f9; --card-bg: rgba(255, 255, 255, 0.9); --border: rgba(0, 0, 0, 0.12); --text: #0f172a; --text-muted: #64748b; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
     body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 50px; transition: background 0.3s, color 0.3s; }
 
-    /* 🌟 CENTERED MENU HEADER DESIGN */
+    /* COMPACT HEADER STYLES */
     header {
       background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
     }
 
     .logo {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      font-size: 1.35rem;
-      font-weight: 800;
-      white-space: nowrap;
+      flex: 0.6;
+      font-size: 1.05rem; font-weight: 800; white-space: nowrap;
       background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #22c55e 100%);
       background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       animation: shineText 6s linear infinite;
+      display: flex; align-items: center; gap: 4px;
     }
     @keyframes shineText { to { background-position: 200% center; } }
 
-    /* 🎯 CENTERED NAVIGATION MENU */
+    /* COMPACT LIVE CLOCK DISPLAY */
+    .header-clock {
+      background: rgba(0, 0, 0, 0.35); border: 1px solid var(--border);
+      padding: 3px 8px; border-radius: 999px; font-weight: 700; font-size: 0.72rem;
+      color: var(--accent-yellow); display: flex; align-items: center; gap: 4px; white-space: nowrap;
+    }
+
+    /* COMPACT MAIN NAVIGATION MENU */
     .nav-tabs {
-      flex: 0 1 auto;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 5px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-      margin: 0 auto;
-      overflow-x: auto;
+      flex: 3;
+      display: flex; justify-content: space-between; align-items: center; gap: 2px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px; border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin: 0 auto; overflow-x: auto; max-width: 100%;
     }
 
     .tab-btn {
-      padding: 8px 16px;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--text-muted);
-      font-weight: 700;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      white-space: nowrap;
-      font-size: 0.88rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .tab-btn:hover {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .tab-btn.active {
-      background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
-      color: #022c22;
-      box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .nav-controls {
       flex: 1;
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
+      padding: 5px 8px; border: none; background: transparent;
+      color: var(--text-muted); font-weight: 700; cursor: pointer; border-radius: 999px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; font-size: 0.78rem;
+      display: flex; align-items: center; justify-content: center; gap: 3px;
     }
 
-    .class-selector {
-      display: flex;
-      background: rgba(0, 0, 0, 0.25);
-      padding: 3px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .class-btn {
-      padding: 6px 14px;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-weight: 800;
-      cursor: pointer;
-      border-radius: 7px;
-      transition: all 0.2s ease;
-      font-size: 0.85rem;
-    }
-
-    .class-btn.active {
+    .tab-btn:hover { color: var(--text); background: rgba(255, 255, 255, 0.08); }
+    .tab-btn.active {
       background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
       color: #0f172a;
-      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 3px 12px rgba(56, 189, 248, 0.4);
+      font-weight: 800;
     }
 
-    .chapter-select-dropdown, .theme-select-dropdown {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 7px 12px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      outline: none;
-    }
+    .nav-controls { flex: 1; display: flex; gap: 5px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+    .class-selector { display: flex; background: rgba(0, 0, 0, 0.25); padding: 2px; border-radius: 999px; border: 1px solid var(--border); }
+    .class-btn { padding: 4px 10px; border: none; background: transparent; color: var(--text-muted); font-weight: 800; cursor: pointer; border-radius: 999px; font-size: 0.78rem; transition: all 0.2s; }
+    .class-btn.active { background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #0f172a; }
 
-    .chapter-select-dropdown:hover, .theme-select-dropdown:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--accent-blue);
+    .dropdown-btn, .admin-btn {
+      background: rgba(255, 255, 255, 0.06); color: var(--text); border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 0.78rem; cursor: pointer; outline: none;
     }
+    .admin-btn { background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(168, 85, 247, 0.1)); border-color: rgba(168, 85, 247, 0.5); }
 
-    .sound-btn, .admin-btn {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .admin-btn {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(168, 85, 247, 0.05));
-      border-color: rgba(168, 85, 247, 0.4);
-    }
-
-    .admin-btn:hover {
-      background: var(--accent-purple);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
-      transform: translateY(-1px);
-    }
-
-    .sound-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-1px);
-    }
-
-    /* 📱 RESPONSIVE MEDIA QUERY */
-    @media (max-width: 900px) {
-      header {
-        flex-direction: column;
-        justify-content: center;
-      }
-      .logo { justify-content: center; }
+    @media (max-width: 950px) {
+      header { flex-direction: column; justify-content: center; }
+      .nav-tabs { width: 100%; margin: 4px 0; border-radius: 10px; }
       .nav-controls { justify-content: center; }
     }
 
-    .container { max-width: 1100px; margin: 25px auto; padding: 0 15px; }
+    .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+    .section-title { font-size: 1.25rem; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .section-title::before { content: ''; width: 4px; height: 18px; background: var(--accent-blue); border-radius: 2px; }
 
-    .section-title { font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-    .section-title::before { content: ''; width: 4px; height: 20px; background: var(--accent-green); border-radius: 2px; }
-
-    /* WHEELS & ANIMATION ENHANCEMENTS */
+    /* WHEELS & FLASHCARDS */
     .wheels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 30px; }
-    .wheel-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    
-    .wheel-container { position: relative; width: 270px; height: 270px; margin: 15px 0; display: flex; justify-content: center; align-items: center; }
-    canvas { width: 100%; height: 100%; border-radius: 50%; filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.3)); }
-    
-    .pointer {
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
-      border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid var(--accent-red);
-      z-index: 10; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); transition: transform 0.05s ease-out;
-    }
-    .pointer.tick { transform: translateX(-50%) rotate(-18deg) scale(1.15); }
-
-    .spin-btn { width: 100%; padding: 12px; border: none; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); color: #000; transition: 0.2s; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
-    .spin-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-    .reset-btn { margin-top: 10px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
-    .reset-btn:hover { border-color: var(--accent-yellow); color: var(--text); }
+    .wheel-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+    .wheel-container { position: relative; width: 270px; height: 270px; margin: 15px 0; }
+    canvas.wheel-canvas { width: 100%; height: 100%; border-radius: 50%; filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.3)); }
+    .spin-btn { width: 100%; padding: 12px; border: none; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; background: linear-gradient(135deg, var(--accent-blue), #0284c7); color: #000; }
+    .reset-btn { margin-top: 8px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; width: 100%; }
 
     .flashcard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-    .flashcard { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 15px; cursor: pointer; transition: 0.3s; position: relative; min-height: 110px; display: flex; flex-direction: column; justify-content: space-between; }
-    .flashcard:hover { transform: translateY(-3px); border-color: var(--accent-green); }
+    .flashcard { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 15px; cursor: pointer; min-height: 110px; display: flex; flex-direction: column; justify-content: space-between; }
     .flashcard.answered { opacity: 0.5; border-color: var(--accent-green); }
-    .flashcard.answered::after { content: '✓'; position: absolute; top: 10px; right: 10px; background: var(--accent-green); color: #000; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
 
-    /* BIRD TYPING GAME */
-    .typing-game-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; position: relative; overflow: hidden; }
-    .typing-stats { display: flex; justify-content: space-around; font-size: 1.2rem; font-weight: 800; margin-bottom: 15px; color: var(--accent-yellow); }
-    .game-sky { width: 100%; height: 350px; background: rgba(0,0,0,0.3); border: 2px solid var(--border); border-radius: 12px; position: relative; overflow: hidden; margin-bottom: 15px; }
-    @keyframes moveCloud { 0% { left: -120px; } 100% { left: 100%; } }
-    .cloud { position: absolute; color: rgba(255, 255, 255, 0.2); font-size: 3rem; user-select: none; pointer-events: none; animation: moveCloud linear infinite; z-index: 1; }
-    .target-bird { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 2.2rem; cursor: pointer; transition: transform 0.1s linear; user-select: none; z-index: 5; }
-    .bird-letter { background: var(--accent-yellow); color: #000; font-weight: 800; font-size: 1.1rem; padding: 2px 8px; border-radius: 6px; border: 2px solid #fff; margin-top: -5px; box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-    .keyboard-guide { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
-    .key-badge { background: rgba(255,255,255,0.08); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 1.1rem; color: var(--accent-blue); transition: 0.1s; }
-    .key-badge.active-key { background: var(--accent-green); color: #000; transform: scale(1.15); }
+    /* STUDENT CHECKBOX LIST MODAL & STYLES */
+    .student-checklist { max-height: 300px; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin: 15px 0; text-align: left; }
+    .student-chk-item { background: rgba(255, 255, 255, 0.05); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; }
 
-    /* MATCHING GAME */
+    /* TECH NEWS STYLES */
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .news-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+    .news-date { font-size: 0.8rem; color: var(--accent-yellow); font-weight: 700; margin-bottom: 6px; }
+    .news-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: var(--accent-blue); }
+    .news-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; border: 1px solid var(--border); }
+    .news-video-box { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden; margin-bottom: 14px; border: 1px solid var(--border); }
+    .news-video-box iframe { width: 100%; height: 100%; border: none; }
+    .news-body { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; white-space: pre-line; }
+
+    /* REPORT & VISITOR STATS STYLES */
+    .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
+    .stat-num { font-size: 1.5rem; font-weight: 800; color: var(--accent-blue); margin-top: 4px; }
+    .report-table { width: 100%; border-collapse: collapse; margin-top: 12px; background: rgba(0,0,0,0.2); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    .report-table th, .report-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .report-table th { background: rgba(0, 0, 0, 0.4); color: var(--accent-blue); font-weight: 800; }
+
+    /* GAME CONTAINERS (BIRD & SNAKE) */
+    .game-wrapper { display: flex; flex-direction: column; align-items: center; }
+    .game-card { width: 100%; max-width: 700px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 15px; }
+    canvas.game-canvas { background: #020617; border: 3px solid var(--border); border-radius: 16px; cursor: crosshair; }
+    .snake-controls { display: grid; grid-template-columns: repeat(3, 55px); grid-template-rows: repeat(2, 45px); gap: 8px; margin-top: 15px; }
+    .s-ctrl-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); font-size: 1.1rem; font-weight: 800; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+    .game-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(8px); border-radius: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px; z-index: 10; }
+
+    /* MATCHING & WORDLE & QUIZ */
     .matching-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 0 auto; }
-    .match-column { display: flex; flex-direction: column; gap: 10px; }
-    .match-card { background: var(--card-bg); border: 2px solid var(--border); padding: 15px; border-radius: 10px; text-align: center; font-weight: 700; cursor: pointer; transition: 0.2s; user-select: none; }
-    .match-card:hover { border-color: var(--accent-green); }
+    .match-card { background: var(--card-bg); border: 2px solid var(--border); padding: 15px; border-radius: 10px; text-align: center; font-weight: 700; cursor: pointer; }
     .match-card.selected { border-color: var(--accent-purple); background: rgba(168, 85, 247, 0.2); }
-    .match-card.matched { border-color: var(--accent-green); background: rgba(34, 197, 94, 0.2); opacity: 0.6; cursor: default; }
+    .match-card.matched { border-color: var(--accent-green); background: rgba(34, 197, 94, 0.2); opacity: 0.6; }
 
-    /* WORDLE GAME */
     .word-game-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 30px; text-align: center; max-width: 600px; margin: 0 auto; }
-    .word-hint { font-size: 1.1rem; margin-bottom: 20px; color: var(--accent-blue); }
     .word-display { font-size: 2.2rem; letter-spacing: 12px; font-weight: 800; margin-bottom: 25px; font-family: monospace; }
     .keyboard { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 500px; margin: 0 auto; }
     .key-btn { width: 36px; height: 40px; border: 1px solid var(--border); background: rgba(255,255,255,0.05); color: var(--text); font-weight: 700; border-radius: 6px; cursor: pointer; }
-    .key-btn:disabled { opacity: 0.3; cursor: default; }
 
-    /* SPEED QUIZ */
     .quiz-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 25px; max-width: 650px; margin: 0 auto; }
-    .quiz-header { display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: 700; color: var(--accent-blue); }
-    .quiz-q { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
-    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
-    .opt-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 12px; border-radius: 8px; color: var(--text); text-align: left; font-weight: 600; cursor: pointer; transition: 0.2s; }
-    .opt-btn:hover { background: rgba(34, 197, 94, 0.2); border-color: var(--accent-green); }
+    .opt-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 12px; border-radius: 8px; color: var(--text); text-align: left; font-weight: 600; cursor: pointer; margin-top: 8px; width: 100%; }
 
-    /* Modals & Admin UI */
+    /* MODAL & ADMIN STYLES */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; }
     .modal.active { display: flex; }
-    .modal-content { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; width: 90%; max-width: 650px; max-height: 85vh; overflow-y: auto; padding: 25px; position: relative; color: var(--text); }
+    .modal-content { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; width: 90%; max-width: 820px; max-height: 85vh; overflow-y: auto; padding: 25px; position: relative; }
     .close-modal { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
-
     .admin-nav { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; overflow-x: auto; }
     .admin-tab-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.8rem; white-space: nowrap; }
-    .admin-tab-btn.active { background: var(--accent-purple); color: #fff; border-color: var(--accent-purple); }
-
+    .admin-tab-btn.active { background: var(--accent-purple); color: #fff; }
     .admin-section { display: none; }
     .admin-section.active { display: block; }
-
     .admin-item { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
     .admin-input { width: 100%; padding: 8px; background: rgba(0,0,0,0.2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; }
-    .del-btn { background: var(--accent-red); color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight:700; shrink:0; }
-    .edit-btn { background: var(--accent-yellow); color: black; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight:700; shrink:0; }
+    .del-btn { background: var(--accent-red); color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight:700; flex-shrink: 0; }
+    .edit-btn { background: var(--accent-blue); color: #000; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight:800; flex-shrink: 0; }
   </style>
 </head>
 <body data-theme="slate">
 
   <header>
-    <div class="logo">⚡ ICT 8th Grade-Teacher Narankhuu B.</div>
+    <div class="logo">⚡ ICT 8th Grade-ICT Narankhuu B</div>
+
+    <!-- COMPACT LIVE CLOCK DISPLAY -->
+    <div class="header-clock">
+      <span>🕒</span> <span id="live-clock-display">Уншиж байна...</span>
+    </div>
     
-    <!-- CENTERED NAV TABS -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('wheels')">🎡 Хүрд</button>
-      <button class="tab-btn" onclick="switchTab('bird')">🦜 Шувуу Онох</button>
+      <button class="tab-btn" onclick="switchTab('news')">📰 Мэдээ</button>
+      <button class="tab-btn" onclick="switchTab('bird')">🎯 Шувуу</button>
+      <button class="tab-btn" onclick="switchTab('snake')">🐍 Могой</button>
       <button class="tab-btn" onclick="switchTab('matching')">🔗 Холбох</button>
       <button class="tab-btn" onclick="switchTab('word')">🧩 Үг таах</button>
-      <button class="tab-btn" onclick="switchTab('speed')">⚡ Speed Quiz</button>
+      <button class="tab-btn" onclick="switchTab('speed')">⚡ Quiz</button>
     </div>
 
     <div class="nav-controls">
-      <!-- CHAPTER FILTER -->
-      <select id="header-chapter-select" class="chapter-select-dropdown" onchange="changeChapterFilter()">
-        <option value="ALL">📚 Бүх бүлэг сэдэв</option>
+      <select id="header-chapter-select" class="dropdown-btn" onchange="changeChapterFilter()">
+        <option value="ALL">📚 Бүх сэдэв</option>
       </select>
 
-      <!-- THEME SWITCHER -->
-      <select id="header-theme-select" class="theme-select-dropdown" onchange="changeTheme(this.value)">
-        <option value="slate">🎨 Dark Slate</option>
-        <option value="purple">🎨 Cyber Purple</option>
-        <option value="ocean">🎨 Deep Ocean</option>
-        <option value="forest">🎨 Emerald Forest</option>
-        <option value="light">🎨 Light Clean</option>
+      <select id="header-theme-select" class="dropdown-btn" onchange="changeTheme(this.value)">
+        <option value="slate">🎨 Slate</option>
+        <option value="purple">🎨 Purple</option>
+        <option value="ocean">🎨 Ocean</option>
+        <option value="forest">🎨 Forest</option>
+        <option value="light">🎨 Light</option>
       </select>
 
       <div class="class-selector">
@@ -321,196 +217,326 @@
         <button class="class-btn" onclick="switchClass('8Б')">8Б</button>
       </div>
 
-      <button class="sound-btn" id="soundToggleBtn" onclick="toggleSound()">🔊 Дуу</button>
+      <button class="dropdown-btn" id="soundToggleBtn" onclick="toggleSound()">🔊 Дуу</button>
       <button class="admin-btn" onclick="openAdmin()">⚙️ Админ</button>
     </div>
   </header>
 
   <div class="container">
     
-    <!-- TAB 1: WHEELS -->
+    <!-- TAB 1: WHEELS & QUESTIONS -->
     <div id="tab-wheels" class="tab-content active">
       <div class="wheels-grid">
         <div class="wheel-card">
           <h3>🎯 1-р алхам: Сурагч сугалах (<span id="current-class-label">8А</span>)</h3>
           <div style="font-size:0.85rem; color:var(--accent-green); margin-top:4px;">Үлдсэн сурагч: <span id="student-count">0</span></div>
           <div class="wheel-container">
-            <div class="pointer" id="studentPointer"></div>
-            <canvas id="studentWheel"></canvas>
+            <canvas id="studentWheel" class="wheel-canvas"></canvas>
           </div>
-          <button class="spin-btn" id="btn-spin-student" onclick="spinStudent()">1. Сурагч сонгох</button>
+          <button class="spin-btn" onclick="spinStudent()">1. Сурагч сонгох</button>
+          <button class="reset-btn" style="border-color:var(--accent-blue); color:var(--accent-blue); margin-top:8px;" onclick="openStudentChecklistModal()">📋 Ирц сонгох (Checklist)</button>
           <button class="reset-btn" onclick="resetStudents()">🔄 Сурагчдыг дахин сэргээх</button>
         </div>
 
         <div class="wheel-card">
           <h3>❓ 2-р алхам: Асуулт сугалах</h3>
-          <div style="font-size:0.85rem; color:var(--accent-yellow); margin-top:4px;">Сонгосон бүлгийн үлдсэн асуулт: <span id="active-q-count">0</span></div>
+          <div style="font-size:0.85rem; color:var(--accent-yellow); margin-top:4px;">Үлдсэн асуулт: <span id="active-q-count">0</span></div>
           <div class="wheel-container">
-            <div class="pointer" id="questionPointer"></div>
-            <canvas id="questionWheel"></canvas>
+            <canvas id="questionWheel" class="wheel-canvas"></canvas>
           </div>
-          <button class="spin-btn" id="btn-spin-question" style="background:linear-gradient(135deg, var(--accent-yellow), var(--accent-purple)); color:#fff;" onclick="spinQuestionDirect()">2. Асуулт сонгох</button>
+          <button class="spin-btn" style="background:linear-gradient(135deg, var(--accent-yellow), var(--accent-purple)); color:#fff;" onclick="spinQuestionDirect()">2. Асуулт сонгох</button>
           <button class="reset-btn" onclick="resetQuestions()">🔄 Асуултуудыг дахин сэргээх</button>
         </div>
       </div>
+
       <div class="section-title">8-р ангийн Асуултын Сан (<span id="q-count">0</span>)</div>
       <div class="flashcard-grid" id="flashcard-container"></div>
     </div>
 
-    <!-- TAB 2: BIRD TYPING GAME -->
+    <!-- TAB 2: TECH NEWS & VIDEOS -->
+    <div id="tab-news" class="tab-content">
+      <div class="section-title">📰 Технологийн Сүүлийн Үеийн Мэдээ Мэдээлэл</div>
+      <div class="news-grid" id="news-container"></div>
+    </div>
+
+    <!-- TAB 3: BIRD SHOOTER GAME -->
     <div id="tab-bird" class="tab-content">
-      <div class="section-title">🦜 Шувуу Онох Тоглоом (Typing Practice)</div>
-      <div class="typing-game-box">
-        <div class="typing-stats">
-          <div>⏱️ Цаг: <span id="bird-timer">60</span>с</div>
-          <div>🎯 Оноо: <span id="bird-score">0</span></div>
-          <div>🔥 Дараалсан: <span id="bird-streak">0</span></div>
-        </div>
-        
-        <div class="game-sky" id="game-sky">
-          <div class="cloud" style="top: 20px; animation-duration: 22s;">☁️</div>
-          <div class="cloud" style="top: 70px; animation-duration: 35s; animation-delay: -10s;">☁️</div>
-          <div class="cloud" style="top: 130px; animation-duration: 28s; animation-delay: -5s;">☁️</div>
+      <div class="section-title">🎯 Шувуу Онох Тоглоом (8-р анги)</div>
+      <div class="game-wrapper">
+        <div class="game-card">
+          <div style="display:flex; justify-content:space-around; font-weight:800; font-size:1.1rem; margin-bottom:10px;">
+            <div>🎯 Оноо: <span id="bird-score" style="color:var(--accent-green);">0</span></div>
+            <div>❤️ Амь: <span id="bird-lives" style="color:var(--accent-red);">❤️❤️❤️</span></div>
+          </div>
+          <div style="font-size:1.2rem; font-weight:800; color:var(--accent-yellow);" id="bird-q-text">Асуулт уншиж байна...</div>
         </div>
 
-        <button class="spin-btn" style="max-width:250px; margin:0 auto;" onclick="startBirdGame()">🎮 Тоглоом Эхлүүлэх / Дахин эхлэх</button>
-
-        <div style="margin-top:20px; font-weight:700; color:var(--text-muted); font-size:0.9rem;">
-          💡 Одоо дадлага хийж буй үсгүүд (Гараас дараарай):
+        <div style="position:relative; width:100%; max-width:600px;">
+          <canvas id="birdCanvas" class="game-canvas" width="600" height="400" onclick="handleBirdClick(event)"></canvas>
+          <div class="game-overlay" id="bird-overlay">
+            <h1 id="bird-ov-title" style="color:var(--accent-blue);">🦅 Bird Shooter Quiz</h1>
+            <p id="bird-ov-sub" style="color:var(--text-muted); text-align:center; max-width:400px;">
+              Нисэж буй шувуудын **ЗӨВ ХАРИУЛТТАЙ** дээр нь тавьж онон (кликдэж) оноогоо цуглуулаарай!
+            </p>
+            <button class="spin-btn" style="max-width:220px;" onclick="startBirdGame()">🎮 Тоглоом Эхлүүлэх</button>
+          </div>
         </div>
-        <div class="keyboard-guide" id="home-row-keys"></div>
       </div>
     </div>
 
-    <!-- TAB 3: MATCHING GAME -->
+    <!-- TAB 4: QUIZ SNAKE -->
+    <div id="tab-snake" class="tab-content">
+      <div class="section-title">🐍 Quiz Snake (Мэдлэгтэй Могой)</div>
+      <div class="game-wrapper">
+        <div class="game-card">
+          <div style="display:flex; justify-content:space-around; font-weight:800; font-size:1.1rem; margin-bottom:10px;">
+            <div>🎯 Оноо: <span id="snake-score" style="color:var(--accent-green);">0</span></div>
+            <div>❤️ Амь: <span id="snake-lives" style="color:var(--accent-red);">❤️❤️❤️</span></div>
+          </div>
+          <div style="font-size:1.2rem; font-weight:800; color:var(--accent-yellow);" id="snake-q-text">Асуулт уншиж байна...</div>
+          <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:10px;" id="snake-legend"></div>
+        </div>
+
+        <div style="position:relative; width:100%; max-width:600px;">
+          <canvas id="snakeCanvas" class="game-canvas" width="600" height="400"></canvas>
+          <div class="game-overlay" id="snake-overlay">
+            <h1 id="snake-ov-title" style="color:var(--accent-green);">🐍 Quiz Snake</h1>
+            <p id="snake-ov-sub" style="color:var(--text-muted); text-align:center; max-width:400px;">
+              Могойгоо суман товчлуураар чиглүүлэн **ЗӨВ ХАРИУЛТТАЙ** хоолыг идэж оноогоо цуглуулаарай!
+            </p>
+            <button class="spin-btn" style="max-width:220px;" onclick="startSnakeGame()">🎮 Тоглоом Эхлүүлэх</button>
+          </div>
+        </div>
+
+        <div class="snake-controls">
+          <div></div>
+          <button class="s-ctrl-btn" onclick="changeSnakeDir('UP')">▲</button>
+          <div></div>
+          <button class="s-ctrl-btn" onclick="changeSnakeDir('LEFT')">◄</button>
+          <button class="s-ctrl-btn" onclick="changeSnakeDir('DOWN')">▼</button>
+          <button class="s-ctrl-btn" onclick="changeSnakeDir('RIGHT')">►</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: MATCHING GAME -->
     <div id="tab-matching" class="tab-content">
-      <div class="section-title">🔗 Алгоритм ба Програмчлалын Код холбох</div>
-      <p style="text-align:center; color:var(--text-muted); margin-bottom:20px;">Код ба түүний тайлбарыг зөв холбоорой!</p>
+      <div class="section-title">🔗 8-р ангийн Нэр томьёоны холбоос</div>
       <div class="matching-container">
         <div class="match-column" id="match-left"></div>
         <div class="match-column" id="match-right"></div>
       </div>
     </div>
 
-    <!-- TAB 4: WORDLE / GUESS -->
+    <!-- TAB 6: WORDLE -->
     <div id="tab-word" class="tab-content">
-      <div class="section-title">🧩 Мэдээлэл зүйн нэр томьёо таах</div>
+      <div class="section-title">🧩 Мэдээлэл зүйн нэр томьёо таах (8-р анги)</div>
       <div class="word-game-box">
-        <div class="word-hint" id="word-hint">Тайлбар уншиж байна...</div>
+        <div class="word-hint" id="word-hint" style="color:var(--accent-blue); margin-bottom:15px;">---</div>
         <div class="word-display" id="word-display">_ _ _ _</div>
         <div class="keyboard" id="keyboard"></div>
         <button class="reset-btn" style="margin-top:20px;" onclick="initWordGame()">Дараагийн үг ➔</button>
       </div>
     </div>
 
-    <!-- TAB 5: SPEED QUIZ -->
+    <!-- TAB 7: SPEED QUIZ -->
     <div id="tab-speed" class="tab-content">
       <div class="section-title">⚡ Speed Quiz (8-р анги)</div>
       <div class="quiz-box">
-        <div class="quiz-header">
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; color:var(--accent-blue); font-weight:700;">
           <div>Асуулт: <span id="quiz-progress">1/5</span></div>
           <div>Оноо: <span id="quiz-score">0</span></div>
         </div>
-        <div class="quiz-q" id="quiz-question">Асуулт уншиж байна...</div>
-        <div class="quiz-options" id="quiz-options"></div>
+        <div style="font-size:1.2rem; font-weight:700; margin-bottom:20px;" id="quiz-question">Уншиж байна...</div>
+        <div id="quiz-options"></div>
       </div>
     </div>
 
   </div>
 
-  <!-- Admin Modal -->
+  <!-- STUDENT CHECKBOXES MODAL -->
+  <div class="modal" id="studentChecklistModal">
+    <div class="modal-content" style="max-width:550px;">
+      <button class="close-modal" onclick="closeStudentChecklistModal()">&times;</button>
+      <h3>📋 Ирц ба Хүрдэнд оролцох сурагчид (<span id="chk-class-label">8А</span>)</h3>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;">Ирээгүй болон хүрдэнд оруулахгүй сурагчдын сонголтыг авна уу.</p>
+      
+      <div style="display:flex; gap:10px; margin-bottom:10px;">
+        <button class="spin-btn" style="padding:4px 10px; font-size:0.8rem; background:var(--accent-blue); color:#000;" onclick="toggleAllChecklist(true)">Бүгдийг сонгох</button>
+        <button class="spin-btn" style="padding:4px 10px; font-size:0.8rem; background:rgba(255,255,255,0.1); color:var(--text);" onclick="toggleAllChecklist(false)">Бүгдийг цэвэрлэх</button>
+      </div>
+
+      <div class="student-checklist" id="student-checklist-container"></div>
+      
+      <button class="spin-btn" style="margin-top:10px;" onclick="saveStudentChecklist()">✅ Хадгалах & Хүрд шинэчлэх</button>
+    </div>
+  </div>
+
+  <!-- SECURE TEACHER ONLY ADMIN MODAL -->
   <div class="modal" id="adminModal">
     <div class="modal-content">
       <button class="close-modal" onclick="closeAdmin()">&times;</button>
-      <h2>⚙️ Админ Панел (8-р анги)</h2>
-      <p style="color:var(--text-muted); margin-bottom:15px; font-size:0.85rem;">Бүх тоглоом, бүлэг болон асуултуудыг эндээс удирдана уу</p>
+      <h2>⚙️ Багшийн Админ Удирдлага (8-р анги)</h2>
+      <p style="color:var(--text-muted); margin-bottom:15px; font-size:0.85rem;">Асуулт засах, техно мэдээ оруулж засах, сурагчид ба хандалтын тайлангийн хэсэг</p>
 
       <div class="admin-nav">
-        <button class="admin-tab-btn active" onclick="switchAdminSection('students')">👨‍🎓 Сурагчид</button>
+        <button class="admin-tab-btn active" onclick="switchAdminSection('reports')">📊 Тайлан & Журнал</button>
+        <button class="admin-tab-btn" onclick="switchAdminSection('news')">📰 Мэдээ Нэмэх & Засах</button>
+        <button class="admin-tab-btn" onclick="switchAdminSection('questions')">❓ Асуултууд Засах</button>
+        <button class="admin-tab-btn" onclick="switchAdminSection('students')">👨‍🎓 Сурагчид</button>
         <button class="admin-tab-btn" onclick="switchAdminSection('chapters')">📂 Бүлэг засах</button>
-        <button class="admin-tab-btn" onclick="switchAdminSection('questions')">❓ Асуултууд нэмэх</button>
-        <button class="admin-tab-btn" onclick="switchAdminSection('typing')">🦜 Шувуу онох үсгүүд</button>
-        <button class="admin-tab-btn" onclick="switchAdminSection('matching')">🔗 Холбох Тоглоом</button>
-        <button class="admin-tab-btn" onclick="switchAdminSection('word')">🧩 Үг Таах Тоглоом</button>
+        <button class="admin-tab-btn" onclick="switchAdminSection('snake')">🐍 Тоглоомын Асуулт</button>
       </div>
 
-      <!-- Admin Section: Students -->
-      <div id="admin-students" class="admin-section active">
+      <!-- Admin: Reports (Visitor Stats & Filtered Question History) -->
+      <div id="admin-reports" class="admin-section active">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+          <h3 style="color:var(--accent-blue);">👁️ Вэб Хандалтын Статистик</h3>
+          <div style="display:flex; gap:8px;">
+            <button class="spin-btn" style="padding:6px 12px; font-size:0.85rem; background:linear-gradient(135deg, var(--accent-green), #16a34a); color:#fff;" onclick="exportReportToCSV()">📥 Шүүгдсэн CSV Татах</button>
+            <button class="del-btn" style="padding:6px 12px; font-size:0.85rem;" onclick="clearReportHistory()">🗑️ Журнал цэвэрлэх</button>
+          </div>
+        </div>
+
+        <div class="report-grid">
+          <div class="stat-card">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">📅 Өнөөдөр</div>
+            <div class="stat-num" style="color:var(--accent-green);" id="rep-views-today">0</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">📆 Энэ сар</div>
+            <div class="stat-num" style="color:var(--accent-blue);" id="rep-views-month">0</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">🗓️ Энэ он</div>
+            <div class="stat-num" style="color:var(--accent-yellow);" id="rep-views-year">0</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">👁️ Нийт хандалт</div>
+            <div class="stat-num" style="color:var(--accent-purple);" id="rep-views-total">0</div>
+          </div>
+        </div>
+
+        <!-- PAGE LEVEL TRACKING TABLE -->
+        <h4 style="margin-top:20px; margin-bottom:8px; color:var(--accent-purple);">📊 Аль хуудас / цэсэнд хамгийн их хандсан бэ?</h4>
+        <table class="report-table" style="margin-bottom:20px;">
+          <thead>
+            <tr>
+              <th>Цэсний нэр (Хуудас)</th>
+              <th>Үзсэн тоо</th>
+            </tr>
+          </thead>
+          <tbody id="page-views-tbody">
+            <tr><td colspan="2" style="text-align:center; color:var(--text-muted);">Хуудасны өгөгдөл алга.</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="border-color: var(--border); margin: 20px 0;">
+
+        <!-- FILTERABLE JOURNAL REPORT SECTION -->
+        <h3 style="color:var(--accent-yellow); margin-bottom:12px;">🕒 8-р ангийн Асуулт ба Хариултын Түүх (Огноогоор шүүх)</h3>
+        
+        <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap; background:rgba(255,255,255,0.03); padding:12px; border-radius:10px; border:1px solid var(--border);">
+          <div style="flex:1; min-width:140px;">
+            <label style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:4px;">📅 Огноогоор шүүх:</label>
+            <select id="report-filter-date" class="admin-input" style="margin:0;" onchange="renderReports()">
+              <option value="ALL">🗓️ Бүх өдөр</option>
+            </select>
+          </div>
+          
+          <div style="flex:1; min-width:120px;">
+            <label style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:4px;">🏫 Ангиар шүүх:</label>
+            <select id="report-filter-class" class="admin-input" style="margin:0;" onchange="renderReports()">
+              <option value="ALL">Бүх анги (8А/8Б)</option>
+              <option value="8A">8А анги</option>
+              <option value="8Б">8Б анги</option>
+            </select>
+          </div>
+
+          <div style="flex:1; min-width:160px;">
+            <label style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:4px;">📖 Бүлгээр шүүх:</label>
+            <select id="report-filter-chapter" class="admin-input" style="margin:0;" onchange="renderReports()">
+              <option value="ALL">Бүх бүлэг сэдэв</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Огноо</th>
+              <th>Цаг</th>
+              <th>Анги</th>
+              <th>Сурагч</th>
+              <th>Асуулт</th>
+              <th>Бүлэг</th>
+            </tr>
+          </thead>
+          <tbody id="report-history-tbody">
+            <tr><td colspan="7" style="text-align:center; color:var(--text-muted);">Одоогоор хариулсан сурагч байхгүй байна.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Admin: News & Video -->
+      <div id="admin-news" class="admin-section">
+        <h3>📰 Техно Мэдээ Нэмэх & Засах</h3>
+        <input type="text" id="new-n-title" placeholder="Гарчиг (Жишээ: MS Word орчинд AI ашиглах нь)" class="admin-input">
+        <input type="text" id="new-n-img" placeholder="Зургийн линк URL (Заавал биш)" class="admin-input">
+        <input type="text" id="new-n-url" placeholder="YouTube бичлэгийн линк URL (Заавал биш)" class="admin-input">
+        <textarea id="new-n-body" rows="4" placeholder="Нийтлэлийн дэлгэрэнгүй эх текст..." class="admin-input"></textarea>
+        <button class="spin-btn" onclick="addNews()">➕ Мэдээ Хадгалах</button>
+        <hr style="border-color: var(--border); margin: 20px 0;">
+        <div id="admin-news-list"></div>
+      </div>
+
+      <!-- Admin: Wheel Questions -->
+      <div id="admin-questions" class="admin-section">
+        <h3>Асуулт Нэмэх ба Засах</h3>
+        <input type="text" id="new-q-chapter" placeholder="Жишээ: Бүлэг 1: MS Word баримт бичиг" class="admin-input">
+        <input type="text" id="new-q-text" placeholder="Асуултын бичвэр" class="admin-input">
+        <input type="text" id="new-q-ans" placeholder="Зөв хариулт" class="admin-input">
+        <button class="spin-btn" onclick="addQuestion()">➕ Шинэ Асуулт Нэмэх</button>
+        <hr style="border-color: var(--border); margin: 20px 0;">
+        <div id="admin-questions-list"></div>
+      </div>
+
+      <!-- Admin: Students -->
+      <div id="admin-students" class="admin-section">
         <label style="font-weight:600; display:block; margin-bottom:5px;">Анги сонгох:</label>
         <select id="admin-class-select" onchange="loadAdminStudents()" class="admin-input">
           <option value="8A">8А бүлэг</option>
           <option value="8Б">8Б бүлэг</option>
         </select>
-        <label style="font-weight:600; display:block; margin-bottom:5px;">Сурагчдын нэрс (Таслалаар заглана уу):</label>
-        <textarea id="admin-student-list" rows="4" class="admin-input"></textarea>
+        <textarea id="admin-student-list" rows="4" class="admin-input" placeholder="Нэрсийг таслалаар тусгаарлана уу..."></textarea>
         <button class="spin-btn" onclick="saveStudents()">Сурагчид хадгалах</button>
       </div>
 
-      <!-- Admin Section: Chapter Management -->
+      <!-- Admin: Chapters -->
       <div id="admin-chapters" class="admin-section">
-        <h3>📂 Бүлэг сэдвүүдийн жагсаалт</h3>
-        <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:15px;">Бүлгийн нэрийг засах эсвэл тухайн бүлгийн бүх асуултыг хамт устгах боломжтой.</p>
         <div id="admin-chapters-list"></div>
       </div>
 
-      <!-- Admin Section: Questions -->
-      <div id="admin-questions" class="admin-section">
-        <h3>Шинэ Асуулт нэмэх</h3>
-        
-        <label style="font-weight:600; display:block; margin-top:8px;">Бүлэг сэдэв сонгох эсвэл шинээр бичих:</label>
-        <input type="text" id="new-q-chapter" list="chapter-suggestions" placeholder="Жишээ: Бүлэг 1: Алгоритм ба Програмчлал" class="admin-input">
-        <datalist id="chapter-suggestions"></datalist>
-
-        <input type="text" id="new-q-text" placeholder="Асуулт" class="admin-input">
-        <input type="text" id="new-q-ans" placeholder="Зөв хариулт" class="admin-input">
-        <button class="spin-btn" onclick="addQuestion()">➕ Асуулт нэмэх</button>
-        <hr style="border-color: var(--border); margin: 20px 0;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-          <h3>Одоо байгаа асуултууд</h3>
-          <button class="del-btn" onclick="deleteAllQuestions()">Бүгдийг устгах</button>
+      <!-- Admin: Snake & Bird Questions -->
+      <div id="admin-snake" class="admin-section">
+        <h3>🐍 Тоглоомын Асуулт Нэмэх</h3>
+        <input type="text" id="new-sq-text" placeholder="Асуулт" class="admin-input">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <input type="radio" name="sqCorrect" value="0" checked>
+          <input type="text" id="sq-opt-0" class="admin-input" placeholder="Зөв хариулт A" style="margin:0;">
         </div>
-        <div id="admin-questions-list"></div>
-      </div>
-
-      <!-- Admin Section: Typing Letters & Timer -->
-      <div id="admin-typing" class="admin-section">
-        <h3>🦜 Шувуу онох тоглоомын тохиргоо</h3>
-        <label style="font-weight:600; display:block; margin: 10px 0 5px;">⏱️ Тоглоомын хугацаа (секундээр):</label>
-        <input type="number" id="admin-timer-input" class="admin-input" placeholder="60">
-
-        <label style="font-weight:600; display:block; margin: 10px 0 5px;">⌨️ Дасгалд ашиглах үсгүүд (зайгаар заглана уу):</label>
-        <input type="text" id="admin-typing-input" class="admin-input" placeholder="Й Ы Б Ө А Х Р О Л Д">
-        
-        <button class="spin-btn" onclick="saveTypingSettings()">💾 Тохиргоо Хадгалах</button>
-        <hr style="border-color: var(--border); margin: 20px 0;">
-        <h4 style="margin-bottom:10px;">Бэлэн загварууд:</h4>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="admin-tab-btn" onclick="setTypingPreset('home')">Суурь мөр (10 үсэг)</button>
-          <button class="admin-tab-btn" onclick="setTypingPreset('top')">Суурь + Дээд мөр</button>
-          <button class="admin-tab-btn" onclick="setTypingPreset('all')">Цагаан толгой бүтэн</button>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <input type="radio" name="sqCorrect" value="1">
+          <input type="text" id="sq-opt-1" class="admin-input" placeholder="Буруу хариулт B" style="margin:0;">
         </div>
-      </div>
-
-      <!-- Admin Section: Matching -->
-      <div id="admin-matching" class="admin-section">
-        <h3>Шинэ Хослол нэмэх</h3>
-        <input type="text" id="new-m-left" placeholder="Зүүн тал" class="admin-input" style="margin-top:8px;">
-        <input type="text" id="new-m-right" placeholder="Баруун тал" class="admin-input">
-        <button class="spin-btn" onclick="addMatchPair()">➕ Хослол нэмэх</button>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+          <input type="radio" name="sqCorrect" value="2">
+          <input type="text" id="sq-opt-2" class="admin-input" placeholder="Буруу хариулт C" style="margin:0;">
+        </div>
+        <button class="spin-btn" onclick="addSnakeQuestion()">➕ Асуулт Хадгалах</button>
         <hr style="border-color: var(--border); margin: 20px 0;">
-        <h3>Одоо байгаа хослолууд</h3>
-        <div id="admin-matching-list" style="margin-top:10px;"></div>
-      </div>
-
-      <!-- Admin Section: Wordle -->
-      <div id="admin-word" class="admin-section">
-        <h3>Шинэ Үг нэмэх</h3>
-        <input type="text" id="new-w-word" placeholder="Таах үг" class="admin-input" style="margin-top:8px;">
-        <input type="text" id="new-w-hint" placeholder="💡 Тайлбар заавар" class="admin-input">
-        <button class="spin-btn" onclick="addWordPair()">➕ Үг нэмэх</button>
-        <hr style="border-color: var(--border); margin: 20px 0;">
-        <h3>Одоо байгаа үгс</h3>
-        <div id="admin-word-list" style="margin-top:10px;"></div>
+        <div id="admin-snake-list"></div>
       </div>
 
     </div>
@@ -520,15 +546,12 @@
   <div class="modal" id="resultModal">
     <div class="modal-content" style="text-align:center;">
       <div style="font-size:1.8rem; font-weight:800; color:var(--accent-yellow); margin-bottom:15px;" id="result-title">🎯 Сонгогдлоо!</div>
-      
       <div id="modal-student-name" style="font-size:1.4rem; font-weight:800; color:var(--accent-blue); margin-bottom:10px; display:none;"></div>
-      <div id="result-body" style="font-size:1.2rem; margin-bottom:20px;">---</div>
-      
+      <div id="result-body" style="font-size:1.2rem; margin-bottom:20px;"></div>
       <div id="q-answer-box" style="display:none; background: rgba(255,255,255,0.05); padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid var(--border);">
         <button id="toggle-ans-btn" class="spin-btn" style="background:rgba(255,255,255,0.15); font-size:0.9rem; color:var(--text);" onclick="revealAnswer()">👁️ Хариулт харах</button>
         <div id="ans-text" style="display:none; color:var(--accent-yellow); font-weight:700; margin-top:5px;">---</div>
       </div>
-
       <div id="result-actions" style="display:flex; flex-direction:column; gap:10px;">
         <button class="spin-btn" onclick="closeResult()">Хаах</button>
       </div>
@@ -536,384 +559,321 @@
   </div>
 
   <script>
-    // --- SOUND ENGINE ---
-    let soundEnabled = true;
-    let audioCtx = null;
-    let bgmInterval = null;
-    let bgmStep = 0;
-
-    const bgmSequence = [
-      { m: 523.25, b: 261.63 }, { m: 659.25, b: 261.63 }, { m: 783.99, b: 329.63 }, { m: 1046.50, b: 329.63 },
-      { m: 880.00, b: 349.23 }, { m: 783.99, b: 349.23 }, { m: 659.25, b: 392.00 }, { m: 523.25, b: 392.00 }
-    ];
-
-    function initAudio() {
-      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if(audioCtx.state === 'suspended') audioCtx.resume();
+    // LIVE REAL-TIME CLOCK FUNCTION
+    function updateLiveClock() {
+      const now = new Date();
+      const dateStr = now.toISOString().split('T')[0];
+      const timeStr = now.toLocaleTimeString('mn-MN', { hour12: false });
+      const clockElem = document.getElementById('live-clock-display');
+      if(clockElem) clockElem.innerText = `${dateStr} ${timeStr}`;
     }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
 
-    function toggleSound() {
-      soundEnabled = !soundEnabled;
-      document.getElementById('soundToggleBtn').innerText = soundEnabled ? '🔊 Дуу' : '🔇 Дуу';
-      if(!soundEnabled) stopBGM();
-    }
+    // ADVANCED DATE-BASED VISITOR TRACKING LOGIC FOR GRADE 8
+    const todayStr = new Date().toISOString().split('T')[0];
+    let dailyViewsMap = {};
+    try { dailyViewsMap = JSON.parse(localStorage.getItem('ict8_daily_views') || '{}'); } catch(e){ dailyViewsMap = {}; }
+    dailyViewsMap[todayStr] = (dailyViewsMap[todayStr] || 0) + 1;
+    localStorage.setItem('ict8_daily_views', JSON.stringify(dailyViewsMap));
 
-    function startBGM() {
-      if(!soundEnabled || bgmInterval) return;
-      initAudio(); bgmStep = 0;
-      bgmInterval = setInterval(() => {
-        if(!soundEnabled || !audioCtx) return;
-        try {
-          const now = audioCtx.currentTime;
-          const note = bgmSequence[bgmStep % bgmSequence.length];
-          const mOsc = audioCtx.createOscillator();
-          const mGain = audioCtx.createGain();
-          mOsc.type = 'square'; mOsc.frequency.setValueAtTime(note.m, now);
-          mGain.gain.setValueAtTime(0.02, now);
-          mGain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-          mOsc.connect(mGain); mGain.connect(audioCtx.destination);
-          mOsc.start(now); mOsc.stop(now + 0.18);
-          bgmStep++;
-        } catch(e){}
-      }, 220);
-    }
+    // PAGE-LEVEL TRACKING FOR GRADE 8
+    let pageViewsMap = {};
+    try { pageViewsMap = JSON.parse(localStorage.getItem('ict8_page_views') || '{}'); } catch(e){ pageViewsMap = {}; }
+    pageViewsMap['wheels'] = (pageViewsMap['wheels'] || 0) + 1;
+    localStorage.setItem('ict8_page_views', JSON.stringify(pageViewsMap));
 
-    function stopBGM() {
-      if(bgmInterval) { clearInterval(bgmInterval); bgmInterval = null; }
-    }
+    const tabNameMap = {
+      'wheels': '🎡 Асуултын Хүрд',
+      'news': '📰 Техно Мэдээ',
+      'bird': '🎯 Шувуу Онох',
+      'snake': '🐍 Quiz Snake',
+      'matching': '🔗 Холбох Тоглоом',
+      'word': '🧩 Үг Таах',
+      'speed': '⚡ Speed Quiz'
+    };
 
+    // SOUND ENGINE
+    let soundEnabled = true, audioCtx = null;
+    function initAudio() { if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state === 'suspended') audioCtx.resume(); }
+    function toggleSound() { soundEnabled = !soundEnabled; document.getElementById('soundToggleBtn').innerText = soundEnabled ? '🔊 Дуу' : '🔇 Дуу'; }
     function playSound(type) {
       if(!soundEnabled) return;
       try {
         initAudio();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+        const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
         osc.connect(gain); gain.connect(audioCtx.destination);
         const now = audioCtx.currentTime;
-
-        if(type === 'hit') {
-          osc.type = 'sine'; osc.frequency.setValueAtTime(900, now);
-          osc.frequency.exponentialRampToValueAtTime(180, now + 0.12);
-          gain.gain.setValueAtTime(0.35, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.12);
-          osc.start(now); osc.stop(now + 0.12);
+        if(type === 'eat' || type === 'hit') {
+          osc.type = 'sine'; osc.frequency.setValueAtTime(523, now); osc.frequency.exponentialRampToValueAtTime(880, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
         } else if(type === 'spin') {
-          osc.type = 'triangle'; osc.frequency.setValueAtTime(400, now);
-          gain.gain.setValueAtTime(0.06, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.03);
-          osc.start(now); osc.stop(now + 0.03);
+          osc.type = 'triangle'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.06, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.03); osc.start(now); osc.stop(now + 0.03);
         } else if(type === 'win') {
-          osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now);
-          osc.frequency.setValueAtTime(659.25, now + 0.1); osc.frequency.setValueAtTime(783.99, now + 0.2);
-          gain.gain.setValueAtTime(0.25, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.45);
-          osc.start(now); osc.stop(now + 0.45);
-        } else if(type === 'miss') {
-          osc.type = 'sawtooth'; osc.frequency.setValueAtTime(160, now);
-          osc.frequency.linearRampToValueAtTime(75, now + 0.15);
-          gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.15);
-          osc.start(now); osc.stop(now + 0.15);
+          osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1);
+          gain.gain.setValueAtTime(0.25, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.35); osc.start(now); osc.stop(now + 0.35);
+        } else if(type === 'miss' || type === 'wrong') {
+          osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.linearRampToValueAtTime(80, now + 0.15);
+          gain.gain.setValueAtTime(0.25, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.15); osc.start(now); osc.stop(now + 0.15);
         }
       } catch(e){}
     }
 
-    // --- DEFAULT DATA SPECIFICALLY FOR GRADE 8 ---
+    // DEFAULT DATA SPECIFICALLY FOR GRADE 8
     const defaultStudents = {
-      '8A': ["Алтаншагай", "Бат-Очир", "Билгүүн", "Ганбат", "Дөлгөөнтамир", "Есөнболд", "Золзаяа", "Индра", "Мөнх-Эрдэнэ", "Наранбаатар", "Оргилболд", "Өлзийхутаг", "Содбилэг", "Тэмүүлэн", "Уранзаяа", "Халиунаа", "Цэлмэг", "Чингүүн", "Шинэбаяр", "Энхжин"],
-      '8Б': ["Алтанчимэг", "Болормаа", "Баяржаргал", "Гэгээнбат", "Давхарбаяр", "Есүйхэн", "Зоригтбаатар", "Идэржавхлан", "Мөнхжин", "Номин-Эрдэнэ", "Оюунзаяа", "Пүрэвсүрэн", "Сүхбат", "Төгөлдөр", "Уянга", "Хүслэн", "Цогтбаатар", "Шижир-Эрдэнэ", "Эрдэнэбулган", "Ялгуун"]
+      '8A': ["Амаржаргал", "Бат-Эрдэнэ", "Билгүүнтамир", "Ган-Эрдэнэ", "Даваажаргал", "Есүй-Эрдэнэ", "Золбоо", "Идэрбаатар", "Мөнхжин", "Наранцацрал", "Оюун-Эрдэнэ", "Өлзийжаргал", "Сод-Эрдэнэ", "Тэмүүжин", "Урангоо", "Халиун", "Цэлмэгжав", "Чинбат", "Шинэ-Эрдэнэ", "Энхжин"],
+      '8Б': ["Ариунболд", "Батжаргал", "Баяржавхлан", "Гэгээннаран", "Дэлгэрмаа", "Есөнжин", "Зоригт", "Ингүүн", "Мөнхтөр", "Номинжин", "Очирбат", "Пүрэвсүрэн", "Сүхболд", "Төгөлдөрбаяр", "Уянгаа", "Хүслэнбаатар", "Цогтсайхан", "Шижир", "Эрдэнэбаяр"]
     };
 
     const defaultQuestions = [
-      { id: 1, chapter: "Бүлэг 1: Алгоритм ба Програмчлал", q: "Python програмчлалын хэл дээр гараас текст оруулахдаа ямар функц ашигладаг вэ?", a: "input() функц" },
-      { id: 2, chapter: "Бүлэг 1: Алгоритм ба Програмчлал", q: "Python дээр нөхцөл шалгах үндсэн оператор юу вэ?", a: "if, elif, else" },
-      { id: 3, chapter: "Бүлэг 2: Вэб бүтээх (HTML)", q: "Вэб хуудасны бүтцийг тодорхойлдог үндсэн хэл юу вэ?", a: "HTML (HyperText Markup Language)" },
-      { id: 4, chapter: "Бүлэг 2: Вэб бүтээх (HTML)", q: "Вэб хуудсанд өөр хуудас руу шижих холбоос (link) үүсгэх таг ямар байдаг вэ?", a: "<a href='...'> таг" },
-      { id: 5, chapter: "Бүлэг 3: Өгөгдлийн сан ба Кибер аюулгүй байдал", q: "Хэрэглэгчийг хууран мэхэлж нууц үг, картны мэдээллийг хулгайлах халдлагыг юу гэх вэ?", a: "Phishing (Фишинг)" },
-      { id: 6, chapter: "Бүлэг 3: Өгөгдлийн сан ба Кибер аюулгүй байдал", q: "MS Excel эсвэл Өгөгдлийн санд баганын утгуудыг цагаан толгойн дарааллаар эрэмбэлэхийг юу гэх вэ?", a: "Sort (Эрэмбэлэх)" }
+      { id: 1, createdDate: "2026-10-17", chapter: "Бүлэг 1: Текст боловсруулах соёл (MS Word)", q: "MS Word дээр баримтыг PDF хэлбэрээр хадгалах ямар давуу талтай вэ?", a: "Формат өөрчлөгдөхгүй, бүх төхөөрөмжид ижил харагдана" },
+      { id: 2, createdDate: "2026-10-17", chapter: "Бүлэг 2: Хүснэгтэн мэдээлэл (MS Excel)", q: "MS Excel дээр сонгосон нүднүүдийн нийлбэрийг олох функц аль нь вэ?", a: "=SUM() функц" },
+      { id: 3, createdDate: "2026-10-17", chapter: "Бүлэг 3: Илтгэл боловсруулах (MS PowerPoint)", q: "MS PowerPoint дээр слайд хооронд шилжих хөдөлгөөний эффектийг юу гэх вэ?", a: "Transition (Шилжилт)" },
+      { id: 4, createdDate: "2026-10-17", chapter: "Бүлэг 4: Програмчлалын үндэс (Scratch)", q: "Scratch програм дээр дүрсийг (спрайт) удирддаг кодын блокуудыг юу гэж нэрлэдэг вэ?", a: "Скрипт (Scripts / Blocks)" }
+    ];
+
+    const defaultNews = [
+      {
+        id: 1,
+        date: "2026-10-17",
+        title: "💻 8-р ангийн сурагчид Scratch орчинд тоглоом хийж сурлаа",
+        imgUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        body: "Мэдээлэл зүйн хичээлээр сурагчид кодингийн алгоритм болон Scratch 프로그램을 ашиглан өөрсдийн бүтээлч тоглоом, анимацийг амжилттай бүтээж байна."
+      }
+    ];
+
+    const defaultSnakeQuestions = [
+      {
+        q: "MS Excel дээр тоонуудын дунджийг олох функц аль нь вэ?",
+        options: [{ text: "📊 =AVERAGE()", correct: true }, { text: "➕ =SUM()", correct: false }, { text: "🔢 =COUNT()", correct: false }]
+      },
+      {
+        q: "MS Word дээр хуудасны дээд, доод захад давтагддаг бичвэрийг юу гэдэг вэ?",
+        options: [{ text: "📄 Header & Footer", correct: true }, { text: "🖼️ Watermark", correct: false }, { text: "📑 Margin", correct: false }]
+      },
+      {
+        q: "Scratch программд дүрсүүдийн байршлыг ямар координатаар тодорхойлдог вэ?",
+        options: [{ text: "📍 X ба Y координат", correct: true }, { text: "📏 A ба B заагч", correct: false }, { text: "📐 С ба D өнцөг", correct: false }]
+      }
     ];
 
     const defaultMatchPairs = [
-      { left: "input()", right: "Гараас утга авах" },
-      { left: "print()", right: "Дэлгэцэнд хэвлэх" },
-      { left: "if / else", right: "Нөхцөл шалгах" },
-      { left: "for / while", right: "Давталт хийх" },
-      { left: "<a>", right: "Гиперхолбоос үүсгэх" }
+      { left: "=SUM()", right: "Нийлбэр олох функц" },
+      { left: "Transition", right: "Слайдын шилжилт эффект" },
+      { left: "Scratch", right: "График програмчлалын орчин" },
+      { left: "Header & Footer", right: "Толгой ба хөл нүүр" }
     ];
 
     const defaultWordList = [
-      { word: "PYTHON", hint: "Орчин үеийн кодчилолын програмчлалын хэл" },
-      { word: "ALGORITHM", hint: "Асуудлыг шийдвэрлэх дэс дараатай алхмууд" },
-      { word: "VARIABLE", hint: "Програмд утга хадгалах хувьсагч" },
-      { word: "PHISHING", hint: "Нууц үг хулгайлах цахим халдлагын төрөл" }
+      { word: "POWERPOINT", hint: "Илтгэл боловсруулдаг програм" },
+      { word: "EXCEL", hint: "Хүснэгтэн мэдээлэл боловсруулах програм" },
+      { word: "SCRATCH", hint: "Хүүхдэд зориулсан кодингийн орчин" }
     ];
 
-    const defaultHomeRow = ['Й', 'Ы', 'Б', 'Ө', 'А', 'Х', 'Р', 'О', 'Л', 'Д'];
+    let currentClass = '8A', currentChapterFilter = 'ALL', currentTheme = localStorage.getItem('ict8_theme') || 'slate';
+    let students = {}, questions = [], news = [], snakeQuestions = [], matchPairs = [], wordList = [], reportHistory = [];
 
-    let currentClass = '8A';
-    let currentChapterFilter = 'ALL';
-    let currentTheme = localStorage.getItem('ict8_theme') || 'slate';
-
-    let students = JSON.parse(localStorage.getItem('ict8_students')) || defaultStudents;
-    let questions = JSON.parse(localStorage.getItem('ict8_questions')) || defaultQuestions;
-    let matchPairs = JSON.parse(localStorage.getItem('ict8_match_pairs')) || defaultMatchPairs;
-    let wordList = JSON.parse(localStorage.getItem('ict8_word_list')) || defaultWordList;
-    let homeRowLetters = JSON.parse(localStorage.getItem('ict8_typing_letters')) || defaultHomeRow;
-    let gameTimerDuration = JSON.parse(localStorage.getItem('ict8_timer_duration')) || 60;
+    try { students = JSON.parse(localStorage.getItem('ict8_students')) || defaultStudents; } catch(e){ students = defaultStudents; }
+    try { questions = JSON.parse(localStorage.getItem('ict8_questions')) || defaultQuestions; } catch(e){ questions = defaultQuestions; }
+    try { news = JSON.parse(localStorage.getItem('ict8_news')) || defaultNews; } catch(e){ news = defaultNews; }
+    try { snakeQuestions = JSON.parse(localStorage.getItem('ict8_snake_questions')) || defaultSnakeQuestions; } catch(e){ snakeQuestions = defaultSnakeQuestions; }
+    try { matchPairs = JSON.parse(localStorage.getItem('ict8_match_pairs')) || defaultMatchPairs; } catch(e){ matchPairs = defaultMatchPairs; }
+    try { wordList = JSON.parse(localStorage.getItem('ict8_word_list')) || defaultWordList; } catch(e){ wordList = defaultWordList; }
+    try { reportHistory = JSON.parse(localStorage.getItem('ict8_report_history')) || []; } catch(e){ reportHistory = []; }
 
     let activeStudents = [...(students[currentClass] || [])];
     let activeQuestions = [...questions];
+    let currentSelectedStudent = null, currentSelectedQuestion = null;
+    let wheelAngles = { studentWheel: 0, questionWheel: 0 }, isSpinning = false;
 
-    let currentSelectedStudent = null;
-    let currentSelectedQuestion = null;
-
-    let wheelAngles = { studentWheel: 0, questionWheel: 0 };
-    let isSpinning = false;
-
-    // THEME MANAGEMENT
+    // THEME & DROPDOWN
     function changeTheme(themeName) {
-      currentTheme = themeName;
-      document.body.setAttribute('data-theme', themeName);
-      localStorage.setItem('ict8_theme', themeName);
-      document.getElementById('header-theme-select').value = themeName;
+      currentTheme = themeName; document.body.setAttribute('data-theme', themeName);
+      localStorage.setItem('ict8_theme', themeName); document.getElementById('header-theme-select').value = themeName;
     }
 
     function populateChapterDropdown() {
       const select = document.getElementById('header-chapter-select');
-      const suggestions = document.getElementById('chapter-suggestions');
-      select.innerHTML = '<option value="ALL">📚 Бүх бүлэг сэдэв</option>';
-      if(suggestions) suggestions.innerHTML = '';
-
+      select.innerHTML = '<option value="ALL">📚 Бүх сэдэв</option>';
       const chapters = [...new Set(questions.map(q => q.chapter || "Бүлэг 1: Ерөнхий"))];
       chapters.forEach(ch => {
-        const opt = document.createElement('option');
-        opt.value = ch; opt.innerText = `📖 ${ch}`;
-        select.appendChild(opt);
-
-        if(suggestions) {
-          const sugOpt = document.createElement('option');
-          sugOpt.value = ch;
-          suggestions.appendChild(sugOpt);
-        }
+        const opt = document.createElement('option'); opt.value = ch; opt.innerText = `📖 ${ch}`; select.appendChild(opt);
       });
       select.value = currentChapterFilter;
     }
 
-    function changeChapterFilter() {
-      currentChapterFilter = document.getElementById('header-chapter-select').value;
-      resetQuestions();
-    }
-
-    function getFilteredQuestions() {
-      if(currentChapterFilter === 'ALL') return questions;
-      return questions.filter(q => (q.chapter || "Бүлэг 1: Ерөнхий") === currentChapterFilter);
-    }
-
+    function changeChapterFilter() { currentChapterFilter = document.getElementById('header-chapter-select').value; resetQuestions(); }
+    function getFilteredQuestions() { return currentChapterFilter === 'ALL' ? questions : questions.filter(q => (q.chapter || "Бүлэг 1: Ерөнхий") === currentChapterFilter); }
     function updateCounters() {
       document.getElementById('student-count').innerText = activeStudents.length;
       document.getElementById('active-q-count').innerText = activeQuestions.length;
       document.getElementById('q-count').innerText = getFilteredQuestions().length;
     }
 
-    // --- ENHANCED CANVAS WHEEL DRAWING ENGINE ---
-    function drawWheel(canvasId, items, angle = 0, highlightIdx = -1) {
-      const canvas = document.getElementById(canvasId);
-      if(!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const size = 270;
-      canvas.width = size; canvas.height = size;
-      const center = size / 2;
-      const radius = center - 12;
-
-      const numItems = items.length;
-      if (numItems === 0) {
-        ctx.clearRect(0, 0, size, size);
-        ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 15px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText("Дууссан! 🏆", center, center);
-        return;
-      }
-
-      const arc = (2 * Math.PI) / numItems;
-      const colors = ['#22c55e', '#38bdf8', '#a855f7', '#f59e0b', '#ec4899', '#6366f1', '#14b8a6'];
-
-      ctx.clearRect(0, 0, size, size);
-
-      // Outer Neon Glow Ring
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(center, center, radius + 4, 0, 2 * Math.PI);
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
-      ctx.lineWidth = 4;
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = '#38bdf8';
-      ctx.stroke();
-      ctx.restore();
-
-      // Draw Slices
-      items.forEach((item, i) => {
-        const sliceAngle = angle + i * arc;
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(center, center);
-        ctx.arc(center, center, radius, sliceAngle, sliceAngle + arc);
-        ctx.lineTo(center, center);
-
-        let sliceColor = colors[i % colors.length];
-        if(i === highlightIdx) {
-          ctx.fillStyle = '#f59e0b';
-          ctx.shadowBlur = 20;
-          ctx.shadowColor = '#f59e0b';
-        } else {
-          ctx.fillStyle = sliceColor;
-        }
-        ctx.fill();
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = 'rgba(15, 23, 42, 0.6)';
-        ctx.stroke();
-
-        // Slice Text
-        ctx.translate(center, center);
-        ctx.rotate(sliceAngle + arc / 2);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 12px Plus Jakarta Sans, sans-serif';
-        ctx.textAlign = 'right';
-        const text = typeof item === 'object' ? `Q${item.id}` : item;
-        ctx.fillText(text, radius - 15, 4);
-        ctx.restore();
+    // STUDENT CHECKLIST MODAL LOGIC
+    function openStudentChecklistModal() {
+      document.getElementById('chk-class-label').innerText = currentClass;
+      const container = document.getElementById('student-checklist-container');
+      container.innerHTML = '';
+      const fullList = students[currentClass] || [];
+      
+      fullList.forEach(sName => {
+        const isChecked = activeStudents.includes(sName);
+        const label = document.createElement('label');
+        label.className = 'student-chk-item';
+        label.innerHTML = `
+          <input type="checkbox" value="${sName}" ${isChecked ? 'checked' : ''}>
+          <span>${sName}</span>
+        `;
+        container.appendChild(label);
       });
-
-      // Glossy Center Metallic Hub
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(center, center, 22, 0, 2 * Math.PI);
-      let hubGrad = ctx.createRadialGradient(center - 5, center - 5, 2, center, center, 22);
-      hubGrad.addColorStop(0, '#ffffff');
-      hubGrad.addColorStop(0.5, '#38bdf8');
-      hubGrad.addColorStop(1, '#0f172a');
-      ctx.fillStyle = hubGrad;
-      ctx.fill();
-      ctx.strokeStyle = '#ffffff';
-      ctx.lineWidth = 3;
-      ctx.stroke();
-      ctx.restore();
+      document.getElementById('studentChecklistModal').classList.add('active');
     }
 
-    // --- PHYSICS-BASED SPIN ENGINE ---
-    function spinWheelAnimation(canvasId, pointerId, items, onComplete) {
-      if(isSpinning) return;
-      if(!items || items.length === 0) return;
+    function closeStudentChecklistModal() { document.getElementById('studentChecklistModal').classList.remove('active'); }
+    function toggleAllChecklist(status) {
+      document.querySelectorAll('#student-checklist-container input[type="checkbox"]').forEach(chk => chk.checked = status);
+    }
+    function saveStudentChecklist() {
+      const checkedNames = [];
+      document.querySelectorAll('#student-checklist-container input[type="checkbox"]:checked').forEach(chk => {
+        checkedNames.push(chk.value);
+      });
+      activeStudents = checkedNames;
+      drawWheel('studentWheel', activeStudents, wheelAngles.studentWheel);
+      updateCounters();
+      closeStudentChecklistModal();
+    }
 
+    // CANVAS WHEELS (FIXED & SAFE INDEX CALCULATION)
+    function drawWheel(canvasId, items, angle = 0, highlightIdx = -1) {
+      const canvas = document.getElementById(canvasId); if(!canvas) return;
+      const ctx = canvas.getContext('2d'); const size = 270, center = size / 2, radius = center - 12;
+      canvas.width = size; canvas.height = size;
+      if (!items || items.length === 0) { 
+        ctx.clearRect(0, 0, size, size); 
+        ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 15px Plus Jakarta Sans, sans-serif'; 
+        ctx.textAlign = 'center'; ctx.fillText("Дууссан! 🏆", center, center); return; 
+      }
+      const arc = (2 * Math.PI) / items.length;
+      const colors = ['#22c55e', '#38bdf8', '#a855f7', '#f59e0b', '#ec4899', '#6366f1'];
+      ctx.clearRect(0, 0, size, size);
+
+      items.forEach((item, i) => {
+        const sliceAngle = angle + i * arc;
+        ctx.save(); ctx.beginPath(); ctx.moveTo(center, center);
+        ctx.arc(center, center, radius, sliceAngle, sliceAngle + arc); ctx.lineTo(center, center);
+        ctx.fillStyle = i === highlightIdx ? '#f59e0b' : colors[i % colors.length];
+        ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(15, 23, 42, 0.6)'; ctx.stroke();
+        ctx.translate(center, center); ctx.rotate(sliceAngle + arc / 2);
+        ctx.fillStyle = '#ffffff'; ctx.font = 'bold 12px Plus Jakarta Sans, sans-serif'; ctx.textAlign = 'right';
+        let label = (typeof item === 'object' && item !== null) ? `Q${item.id}` : String(item);
+        ctx.fillText(label, radius - 15, 4); ctx.restore();
+      });
+    }
+
+    function spinWheelAnimation(canvasId, items, onComplete) {
+      if(isSpinning || !items || items.length === 0) return;
       isSpinning = true;
-      const pointerEl = document.getElementById(pointerId);
-      
       let startAngle = wheelAngles[canvasId] || 0;
       let totalSpins = 8 + Math.random() * 5;
-      let randomOffset = Math.random() * 2 * Math.PI;
-      let targetAngle = startAngle + totalSpins * 2 * Math.PI + randomOffset;
-      
-      let startTime = null;
-      let duration = 3500;
-      let lastSliceIndex = -1;
-
-      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+      let targetAngle = startAngle + totalSpins * 2 * Math.PI + Math.random() * 2 * Math.PI;
+      let startTime = null, duration = 3500, lastSliceIndex = -1;
 
       function animate(timestamp) {
         if (!startTime) startTime = timestamp;
-        let elapsed = timestamp - startTime;
-        let progress = Math.min(elapsed / duration, 1);
-        let easeProgress = easeOutQuart(progress);
-        
+        let progress = Math.min((timestamp - startTime) / duration, 1);
+        let easeProgress = 1 - Math.pow(1 - progress, 4);
         let currentAngle = startAngle + (targetAngle - startAngle) * easeProgress;
         wheelAngles[canvasId] = currentAngle;
 
-        let numItems = items.length;
-        let arc = (2 * Math.PI) / numItems;
-        let normalizedAngle = (currentAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        let arc = (2 * Math.PI) / items.length;
+        let normalizedAngle = ((currentAngle % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
         let pointerAngle = (1.5 * Math.PI - normalizedAngle + 2 * Math.PI) % (2 * Math.PI);
-        let currentSliceIndex = Math.floor(pointerAngle / arc) % numItems;
+        let rawIdx = Math.floor(pointerAngle / arc);
+        let currentSliceIndex = ((rawIdx % items.length) + items.length) % items.length;
 
-        if (currentSliceIndex !== lastSliceIndex) {
-          lastSliceIndex = currentSliceIndex;
-          playSound('spin');
-          if(pointerEl) {
-            pointerEl.classList.add('tick');
-            setTimeout(() => pointerEl.classList.remove('tick'), 40);
-          }
-        }
-
+        if (currentSliceIndex !== lastSliceIndex) { lastSliceIndex = currentSliceIndex; playSound('spin'); }
         drawWheel(canvasId, items, currentAngle);
 
         if (progress < 1) {
           requestAnimationFrame(animate);
         } else {
           isSpinning = false;
-          let winningIndex = currentSliceIndex;
-          drawWheel(canvasId, items, currentAngle, winningIndex);
-          if (onComplete) onComplete(items[winningIndex]);
+          drawWheel(canvasId, items, currentAngle, currentSliceIndex);
+          if (onComplete && items[currentSliceIndex] !== undefined) {
+            onComplete(items[currentSliceIndex]);
+          }
         }
       }
-
       requestAnimationFrame(animate);
     }
 
-    // STEP 1: SPIN STUDENT
     function spinStudent() {
-      if(!activeStudents || activeStudents.length === 0) return alert("Бүх сурагч хариулж дууссан байна!");
-      spinWheelAnimation('studentWheel', 'studentPointer', activeStudents, (selectedStudent) => {
-        currentSelectedStudent = selectedStudent;
-        showStudentSelectedModal();
-        playSound('win');
-        confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
+      if(!activeStudents.length) return alert("Бүх сурагч хариулсан эсвэл сонгогдоогүй байна!");
+      spinWheelAnimation('studentWheel', activeStudents, (s) => {
+        currentSelectedStudent = s; showStudentSelectedModal(); playSound('win'); confetti({ particleCount: 70, spread: 70 });
       });
     }
 
     function showStudentSelectedModal() {
-      document.getElementById('result-title').innerText = "🎯 Сурагч сонгогдлоо!";
+      document.getElementById('result-title').innerText = "🎯 Сонгогдлоо!";
       document.getElementById('modal-student-name').style.display = 'block';
       document.getElementById('modal-student-name').innerText = `👨‍🎓 ${currentSelectedStudent}`;
-      document.getElementById('result-body').innerText = `Одоо асуултыг сугалж хариулулна уу!`;
+      document.getElementById('result-body').innerText = "";
       document.getElementById('q-answer-box').style.display = 'none';
-
       document.getElementById('result-actions').innerHTML = `
-        <button class="spin-btn" style="background:linear-gradient(135deg, var(--accent-yellow), var(--accent-purple)); color:#fff;" onclick="spinQuestionForStudent()">🎲 ${currentSelectedStudent}-д асуулт сугалах</button>
+        <button class="spin-btn" style="background:linear-gradient(135deg, var(--accent-yellow), var(--accent-purple)); color:#fff;" onclick="spinQuestionForStudent()">🎲 Асуулт сугалах</button>
         <button class="spin-btn" style="background:rgba(255,255,255,0.1); color:var(--text);" onclick="closeResult()">Цонх хаах</button>
       `;
       document.getElementById('resultModal').classList.add('active');
     }
 
-    // STEP 2: SPIN QUESTION FOR SELECTED STUDENT
     function spinQuestionForStudent() {
       closeResult();
-      if(activeQuestions.length === 0) return alert("Сонгогдсон бүлгийн бүх асуулт дууссан байна!");
-      spinWheelAnimation('questionWheel', 'questionPointer', activeQuestions, (selectedQ) => {
-        currentSelectedQuestion = selectedQ;
-        showFinalQuestionModal();
-        playSound('win');
-        confetti({ particleCount: 80, spread: 80, origin: { y: 0.6 } });
+      if(!activeQuestions.length) return alert("Асуулт дууссан байна!");
+      spinWheelAnimation('questionWheel', activeQuestions, (q) => { 
+        currentSelectedQuestion = q; 
+        showFinalQuestionModal(); 
+        playSound('win'); 
       });
     }
 
-    // STEP 3: SHOW QUESTION & CONFIRM BOTH REMOVAL
     function showFinalQuestionModal() {
+      if(!currentSelectedQuestion) return;
       document.getElementById('result-title').innerText = `❓ Асуулт сугалагдлаа`;
-      document.getElementById('modal-student-name').style.display = 'block';
       document.getElementById('modal-student-name').innerText = `👨‍🎓 Сурагч: ${currentSelectedStudent || "Сонгогдоогүй"}`;
-      
-      document.getElementById('result-body').innerHTML = `
-        <div style="font-size:0.8rem; color:var(--accent-blue); margin-bottom:5px; font-weight:700;">${currentSelectedQuestion.chapter || 'Ерөнхий'}</div>
-        <div style="text-align:left; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; border:1px solid var(--border);"><b>Асуулт ${currentSelectedQuestion.id}:</b> ${currentSelectedQuestion.q}</div>
-      `;
-
-      const ansBox = document.getElementById('q-answer-box');
-      const ansText = document.getElementById('ans-text');
-      const toggleBtn = document.getElementById('toggle-ans-btn');
-      ansBox.style.display = 'block'; toggleBtn.style.display = 'inline-block'; ansText.style.display = 'none';
-      ansText.innerHTML = `<b>Зөв хариулт:</b> ${currentSelectedQuestion.a}`;
-
+      document.getElementById('result-body').innerHTML = `<div style="text-align:left; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px;"><b>Асуулт ${currentSelectedQuestion.id}:</b> ${currentSelectedQuestion.q}</div>`;
+      document.getElementById('q-answer-box').style.display = 'block';
+      document.getElementById('toggle-ans-btn').style.display = 'inline-block';
+      document.getElementById('ans-text').style.display = 'none';
+      document.getElementById('ans-text').innerHTML = `<b>Зөв хариулт:</b> ${currentSelectedQuestion.a}`;
       document.getElementById('result-actions').innerHTML = `
-        <button class="spin-btn" style="background:var(--accent-green);" onclick="markBothAnswered()">✅ Зөв хариулсан (Нэр + Асуулт хоёуланг нь хасах)</button>
-        <button class="spin-btn" style="background:rgba(255,255,255,0.1); color:var(--text);" onclick="closeResult()">❌ Буруу хариулсан (Хасахгүй үлдээх)</button>
+        <button class="spin-btn" style="background:var(--accent-green);" onclick="markBothAnswered()">✅ Зөв хариулсан (Сурагч + Асуулт хасах)</button>
+        <button class="spin-btn" style="background:rgba(255,255,255,0.1); color:var(--text);" onclick="closeResult()">❌ Буруу хариулсан (Хасахгүй)</button>
       `;
       document.getElementById('resultModal').classList.add('active');
     }
 
     function markBothAnswered() {
+      if(currentSelectedStudent && currentSelectedQuestion) {
+        const nowDate = new Date().toISOString().split('T')[0];
+        const nowTime = new Date().toLocaleTimeString('mn-MN', { hour: '2-digit', minute: '2-digit' });
+        
+        reportHistory.unshift({
+          id: reportHistory.length + 1,
+          date: nowDate,
+          time: nowTime,
+          class: currentClass,
+          student: currentSelectedStudent,
+          qId: currentSelectedQuestion.id,
+          question: currentSelectedQuestion.q,
+          chapter: currentSelectedQuestion.chapter || "Ерөнхий"
+        });
+        localStorage.setItem('ict8_report_history', JSON.stringify(reportHistory));
+      }
+
       if(currentSelectedStudent) {
         activeStudents = activeStudents.filter(s => s !== currentSelectedStudent);
       }
@@ -922,425 +882,530 @@
       }
       drawWheel('studentWheel', activeStudents, wheelAngles.studentWheel);
       drawWheel('questionWheel', activeQuestions, wheelAngles.questionWheel);
-      updateCounters(); renderCards();
-      playSound('win'); confetti({ particleCount: 60, spread: 70 });
+      updateCounters();
+      renderCards();
+      playSound('win');
+      currentSelectedStudent = null;
+      currentSelectedQuestion = null;
       closeResult();
-      currentSelectedStudent = null; currentSelectedQuestion = null;
     }
 
-    // DIRECT QUESTION SPIN
     function spinQuestionDirect() {
-      if(activeQuestions.length === 0) return alert("Сонгосон бүлгийн бүх асуулт дууссан байна!");
-      currentSelectedStudent = null;
-      spinWheelAnimation('questionWheel', 'questionPointer', activeQuestions, (selectedQ) => {
-        currentSelectedQuestion = selectedQ;
-        showQuestionDirectModal(currentSelectedQuestion);
-        playSound('win'); confetti({ particleCount: 70, spread: 70 });
+      if(!activeQuestions.length) return alert("Асуулт дууссан байна!");
+      spinWheelAnimation('questionWheel', activeQuestions, (q) => {
+        currentSelectedQuestion = q;
+        document.getElementById('result-title').innerText = `❓ Асуулт ${q.id}`;
+        document.getElementById('modal-student-name').style.display = 'none';
+        document.getElementById('result-body').innerText = q.q;
+        document.getElementById('q-answer-box').style.display = 'block';
+        document.getElementById('toggle-ans-btn').style.display = 'inline-block';
+        document.getElementById('ans-text').style.display = 'none';
+        document.getElementById('ans-text').innerHTML = `<b>Зөв хариулт:</b> ${q.a}`;
+        document.getElementById('result-actions').innerHTML = `
+          <button class="spin-btn" style="background:var(--accent-green);" onclick="markBothAnswered()">✅ Зөв хариулсан (Асуултыг хасах)</button>
+          <button class="spin-btn" style="background:rgba(255,255,255,0.1); color:var(--text);" onclick="closeResult()">❌ Буруу хариулсан (Хасахгүй)</button>
+        `;
+        document.getElementById('resultModal').classList.add('active'); playSound('win');
       });
     }
 
-    function showQuestionDirectModal(q) {
-      currentSelectedQuestion = q;
-      document.getElementById('result-title').innerText = `❓ Асуулт ${q.id}`;
-      document.getElementById('modal-student-name').style.display = 'none';
-      document.getElementById('result-body').innerHTML = `
-        <div style="font-size:0.85rem; color:var(--accent-blue); margin-bottom:8px; font-weight:700;">${q.chapter || 'Ерөнхий'}</div>
-        <div>${q.q}</div>
-      `;
-
-      const ansBox = document.getElementById('q-answer-box');
-      const ansText = document.getElementById('ans-text');
-      const toggleBtn = document.getElementById('toggle-ans-btn');
-      ansBox.style.display = 'block'; toggleBtn.style.display = 'inline-block'; ansText.style.display = 'none';
-      ansText.innerHTML = `<b>Зөв хариулт:</b> ${q.a}`;
-
-      const isAnswered = !activeQuestions.some(aq => aq.id === q.id);
-      document.getElementById('result-actions').innerHTML = `
-        ${!isAnswered ? `<button class="spin-btn" style="background:var(--accent-green)" onclick="markOnlyQuestionAnswered(${q.id})">✅ Зөв хариулсан (Асуултыг хасах)</button>` : ''}
-        <button class="spin-btn" style="background:rgba(255,255,255,0.1); color:var(--text);" onclick="closeResult()">Алгасах</button>
-      `;
-      document.getElementById('resultModal').classList.add('active');
-    }
-
-    function markOnlyQuestionAnswered(qId) {
-      activeQuestions = activeQuestions.filter(q => q.id !== qId);
-      drawWheel('questionWheel', activeQuestions, wheelAngles.questionWheel);
-      playSound('win'); renderCards(); closeResult();
-    }
-
-    function revealAnswer() {
-      document.getElementById('toggle-ans-btn').style.display = 'none';
-      document.getElementById('ans-text').style.display = 'block';
-    }
-
-    function resetStudents() {
-      activeStudents = [...(students[currentClass] || [])];
-      drawWheel('studentWheel', activeStudents, wheelAngles.studentWheel);
-      updateCounters();
-    }
-
-    function resetQuestions() {
-      activeQuestions = getFilteredQuestions();
-      drawWheel('questionWheel', activeQuestions, wheelAngles.questionWheel);
-      renderCards();
-    }
-
+    function revealAnswer() { document.getElementById('toggle-ans-btn').style.display = 'none'; document.getElementById('ans-text').style.display = 'block'; }
+    function resetStudents() { activeStudents = [...(students[currentClass] || [])]; drawWheel('studentWheel', activeStudents, wheelAngles.studentWheel); updateCounters(); }
+    function resetQuestions() { activeQuestions = getFilteredQuestions(); drawWheel('questionWheel', activeQuestions, wheelAngles.questionWheel); renderCards(); }
     function closeResult() { document.getElementById('resultModal').classList.remove('active'); }
 
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById(`tab-${tabId}`).classList.add('active');
-
-      if(tabId !== 'bird') stopBGM();
-
-      if(tabId === 'bird') initBirdGame();
-      if(tabId === 'matching') initMatchingGame();
-      if(tabId === 'word') initWordGame();
-      if(tabId === 'speed') initSpeedQuiz();
+    // YOUTUBE HELPER
+    function getYouTubeEmbedUrl(url) {
+      if(!url) return null;
+      let match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+      return match && match[1] ? `https://www.youtube.com/embed/${match[1]}` : null;
     }
 
-    function switchClass(cls) {
-      currentClass = cls;
-      document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('current-class-label').innerText = cls;
-      resetStudents();
-    }
-
-    function renderCards() {
-      const container = document.getElementById('flashcard-container');
-      container.innerHTML = '';
-      updateCounters();
-      const filtered = getFilteredQuestions();
-      filtered.forEach((q) => {
-        const isAnswered = !activeQuestions.some(aq => aq.id === q.id);
-        const card = document.createElement('div');
-        card.className = `flashcard ${isAnswered ? 'answered' : ''}`;
+    // TECH NEWS RENDER
+    function renderNews() {
+      const container = document.getElementById('news-container'); container.innerHTML = '';
+      if(news.length === 0) { container.innerHTML = '<div style="color:var(--text-muted)">Одоогоор мэдээ оруулаагүй байна.</div>'; return; }
+      news.forEach(n => {
+        const embedUrl = getYouTubeEmbedUrl(n.videoUrl);
+        const card = document.createElement('div'); card.className = 'news-card';
         card.innerHTML = `
           <div>
-            <span style="font-size:0.75rem; background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; color:var(--accent-blue); font-weight:700;">${q.chapter || 'Ерөнхий'}</span>
-            <div style="font-weight:800; color:var(--accent-green); margin-top:4px;">Асуулт ${q.id}</div>
-            <div style="margin-top:4px;">${q.q}</div>
+            <div class="news-date">📅 ${n.date}</div>
+            <div class="news-title">${n.title}</div>
+            ${n.imgUrl ? `<img src="${n.imgUrl}" class="news-img" alt="news">` : ''}
+            ${embedUrl ? `
+              <div class="news-video-box">
+                <iframe src="${embedUrl}" allowfullscreen></iframe>
+              </div>` : ''}
+            <div class="news-body">${n.body}</div>
           </div>
         `;
-        card.onclick = () => showQuestionDirectModal(q);
         container.appendChild(card);
       });
     }
 
-    // --- BIRD TYPING GAME ---
-    let birdScore = 0, birdStreak = 0;
-    let activeBirds = [], birdInterval = null;
-    let currentTimer = gameTimerDuration;
-    let timerInterval = null;
-    let isGameRunning = false;
+    // SECURE REPORT MODULE & VISITOR STATS & FILTERED HISTORY
+    function renderReports() {
+      const curToday = new Date().toISOString().split('T')[0];
+      const curMonth = curToday.substring(0, 7);
+      const curYear = curToday.substring(0, 4);
 
-    function renderHomeRowGuides() {
-      const guideBox = document.getElementById('home-row-keys');
-      guideBox.innerHTML = '';
-      homeRowLetters.forEach(letter => {
-        const badge = document.createElement('div');
-        badge.className = 'key-badge'; badge.id = `key-badge-${letter}`;
-        badge.innerText = letter;
-        guideBox.appendChild(badge);
+      let viewsToday = dailyViewsMap[curToday] || 0;
+      let viewsMonth = 0;
+      let viewsYear = 0;
+      let viewsTotal = 0;
+
+      Object.keys(dailyViewsMap).forEach(dateKey => {
+        let count = dailyViewsMap[dateKey];
+        viewsTotal += count;
+        if(dateKey.startsWith(curMonth)) viewsMonth += count;
+        if(dateKey.startsWith(curYear)) viewsYear += count;
+      });
+
+      document.getElementById('rep-views-today').innerText = viewsToday;
+      document.getElementById('rep-views-month').innerText = viewsMonth;
+      document.getElementById('rep-views-year').innerText = viewsYear;
+      document.getElementById('rep-views-total').innerText = viewsTotal;
+
+      // Render Page-Level Specific Views Table
+      const pageTbody = document.getElementById('page-views-tbody');
+      pageTbody.innerHTML = '';
+      
+      let sortedPages = Object.keys(tabNameMap).map(pKey => ({
+        key: pKey,
+        name: tabNameMap[pKey],
+        count: pageViewsMap[pKey] || 0
+      })).sort((a,b) => b.count - a.count);
+
+      sortedPages.forEach(p => {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-weight:700;">${p.name}</td>
+          <td style="font-weight:800; color:var(--accent-purple);">${p.count} удаа</td>
+        `;
+        pageTbody.appendChild(tr);
+      });
+
+      // POPULATE REPORT FILTER DROPDOWNS
+      const dateSelect = document.getElementById('report-filter-date');
+      const chapterSelect = document.getElementById('report-filter-chapter');
+      
+      const savedDateVal = dateSelect.value || 'ALL';
+      const savedChapVal = chapterSelect.value || 'ALL';
+
+      // Unique Dates
+      const uniqueDates = [...new Set(reportHistory.map(item => item.date || curToday))].sort().reverse();
+      dateSelect.innerHTML = '<option value="ALL">🗓️ Бүх өдөр</option>';
+      uniqueDates.forEach(d => {
+        dateSelect.innerHTML += `<option value="${d}">📅 ${d}</option>`;
+      });
+      dateSelect.value = savedDateVal;
+
+      // Unique Chapters
+      const uniqueChapters = [...new Set(questions.map(q => q.chapter || "Ерөнхий"))];
+      chapterSelect.innerHTML = '<option value="ALL">Бүх бүлэг сэдэв</option>';
+      uniqueChapters.forEach(ch => {
+        chapterSelect.innerHTML += `<option value="${ch}">📖 ${ch}</option>`;
+      });
+      chapterSelect.value = savedChapVal;
+
+      // APPLY FILTERS TO HISTORY TABLE
+      const selDate = dateSelect.value;
+      const selClass = document.getElementById('report-filter-class').value;
+      const selChapter = chapterSelect.value;
+
+      const filteredHistory = reportHistory.filter(item => {
+        const itemDate = item.date || curToday;
+        const matchDate = (selDate === 'ALL' || itemDate === selDate);
+        const matchClass = (selClass === 'ALL' || item.class === selClass);
+        const matchChap = (selChapter === 'ALL' || item.chapter === selChapter);
+        return matchDate && matchClass && matchChap;
+      });
+
+      const tbody = document.getElementById('report-history-tbody');
+      tbody.innerHTML = '';
+
+      if (filteredHistory.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">Сонгосон шүүлтүүрт тохирох хариултын түүх алга.</td></tr>`;
+        return;
+      }
+
+      filteredHistory.forEach((item, index) => {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td style="color:var(--accent-yellow); font-weight:700;">${item.date || curToday}</td>
+          <td style="color:var(--text-muted); font-size:0.8rem;">${item.time}</td>
+          <td><b>${item.class}</b></td>
+          <td style="color:var(--accent-blue); font-weight:700;">${item.student}</td>
+          <td>Q${item.qId}: ${item.question}</td>
+          <td><span style="font-size:0.75rem; color:var(--accent-purple); font-weight:700;">${item.chapter}</span></td>
+        `;
+        tbody.appendChild(tr);
       });
     }
 
-    function initBirdGame() {
-      renderHomeRowGuides();
-      document.getElementById('bird-timer').innerText = gameTimerDuration;
+    function exportReportToCSV() {
+      const dateSelect = document.getElementById('report-filter-date').value;
+      const classSelect = document.getElementById('report-filter-class').value;
+      const chapSelect = document.getElementById('report-filter-chapter').value;
+      const curToday = new Date().toISOString().split('T')[0];
+
+      const filtered = reportHistory.filter(item => {
+        const itemDate = item.date || curToday;
+        const matchDate = (dateSelect === 'ALL' || itemDate === dateSelect);
+        const matchClass = (classSelect === 'ALL' || item.class === classSelect);
+        const matchChap = (chapSelect === 'ALL' || item.chapter === chapSelect);
+        return matchDate && matchClass && matchChap;
+      });
+
+      if (filtered.length === 0) return alert("Татах шүүгдсэн тайлангийн өгөгдөл одоогоор алга байна!");
+
+      let csvContent = "\uFEFF#,Огноо,Цаг,Анги,Сурагч,Асуултын №,Асуулт,Бүлэг\n";
+      filtered.forEach((item, i) => {
+        let cleanQ = `"${item.question.replace(/"/g, '""')}"`;
+        let cleanCh = `"${(item.chapter||'').replace(/"/g, '""')}"`;
+        csvContent += `${i + 1},${item.date || curToday},${item.time},${item.class},${item.student},Q${item.qId},${cleanQ},${cleanCh}\n`;
+      });
+
+      let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      let url = URL.createObjectURL(blob);
+      let a = document.createElement('a');
+      a.href = url;
+      a.download = `ICT_8th_Grade_Report_${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function clearReportHistory() {
+      if(confirm("Хариулсан сурагчдын журны түүхийг устгах уу?")) {
+        reportHistory = [];
+        localStorage.setItem('ict8_report_history', JSON.stringify(reportHistory));
+        renderReports();
+      }
+    }
+
+    // GAME 1: BIRD SHOOTER QUIZ ENGINE
+    const bCanvas = document.getElementById('birdCanvas');
+    const bCtx = bCanvas.getContext('2d');
+    let bCurrentQIdx = 0, bScore = 0, bLives = 3, isBirdRunning = false, birdLoop = null;
+    let birds = [];
+
+    function loadBirdQuestion() {
+      if(!snakeQuestions.length) return;
+      const q = snakeQuestions[bCurrentQIdx % snakeQuestions.length];
+      document.getElementById('bird-q-text').innerText = `❓ ${q.q}`;
+      birds = [];
+      q.options.forEach((opt, idx) => {
+        birds.push({
+          x: 50 + idx * 170,
+          y: Math.random() * 150 + 100,
+          vx: (Math.random() > 0.5 ? 1 : -1) * (1.5 + Math.random()),
+          vy: Math.sin(idx) * 1.2,
+          radius: 35,
+          text: opt.text,
+          correct: opt.correct,
+          color: ['#38bdf8', '#a855f7', '#22c55e'][idx % 3]
+        });
+      });
     }
 
     function startBirdGame() {
-      birdScore = 0; birdStreak = 0; currentTimer = gameTimerDuration; isGameRunning = true;
-      updateBirdStats();
-      const sky = document.getElementById('game-sky');
-      document.querySelectorAll('.target-bird').forEach(b => b.remove());
-      activeBirds = [];
-      if(birdInterval) clearInterval(birdInterval);
-      if(timerInterval) clearInterval(timerInterval);
-      startBGM();
-
-      timerInterval = setInterval(() => {
-        currentTimer--; document.getElementById('bird-timer').innerText = currentTimer;
-        if(currentTimer <= 0) endBirdGame();
-      }, 1000);
-
-      for(let i=0; i<3; i++) spawnBird();
-      birdInterval = setInterval(() => { if(isGameRunning && activeBirds.length < 5) spawnBird(); }, 1800);
+      if(!snakeQuestions.length) return alert("Асуулт одоогоор алга байна!");
+      bScore = 0; bLives = 3; bCurrentQIdx = 0;
+      updateBirdUI();
+      document.getElementById('bird-overlay').style.display = 'none';
+      loadBirdQuestion();
+      isBirdRunning = true;
+      if(birdLoop) clearInterval(birdLoop);
+      birdLoop = setInterval(runBirdLoop, 30);
     }
 
-    function endBirdGame() {
-      isGameRunning = false; clearInterval(birdInterval); clearInterval(timerInterval);
-      stopBGM(); playSound('win'); confetti({ particleCount: 100, spread: 80 });
-      alert(`⏰ Цаг дууслаа! Нийт оноо: ${birdScore} оноо!`);
+    function runBirdLoop() {
+      if(!isBirdRunning) return;
+      bCtx.fillStyle = '#020617'; bCtx.fillRect(0, 0, bCanvas.width, bCanvas.height);
+
+      birds.forEach(b => {
+        b.x += b.vx; b.y += b.vy;
+        if(b.x - b.radius < 0 || b.x + b.radius > bCanvas.width) b.vx *= -1;
+        if(b.y - b.radius < 50 || b.y + b.radius > bCanvas.height - 50) b.vy *= -1;
+
+        bCtx.save();
+        bCtx.fillStyle = b.color;
+        bCtx.shadowBlur = 12; bCtx.shadowColor = b.color;
+        bCtx.beginPath(); bCtx.arc(b.x, b.y, b.radius, 0, Math.PI * 2); bCtx.fill();
+        
+        bCtx.fillStyle = '#ffffff'; bCtx.font = 'bold 12px Plus Jakarta Sans, sans-serif'; bCtx.textAlign = 'center';
+        bCtx.fillText(b.text, b.x, b.y + b.radius + 18);
+        bCtx.font = '22px sans-serif';
+        bCtx.fillText('🦅', b.x, b.y + 7);
+        bCtx.restore();
+      });
     }
 
-    function spawnBird() {
-      if(!isGameRunning || homeRowLetters.length === 0) return;
-      const sky = document.getElementById('game-sky');
-      const letter = homeRowLetters[Math.floor(Math.random() * homeRowLetters.length)];
-      const birdEl = document.createElement('div');
-      birdEl.className = 'target-bird';
-      birdEl.innerHTML = `🦜<span class="bird-letter">${letter}</span>`;
-      const startX = Math.random() * (sky.clientWidth - 60);
-      const startY = sky.clientHeight - 60;
-      birdEl.style.left = `${startX}px`; birdEl.style.top = `${startY}px`;
-      sky.appendChild(birdEl);
-      activeBirds.push({ el: birdEl, letter: letter, x: startX, y: startY, speed: 0.8 + Math.random() * 1.2 });
-    }
+    function handleBirdClick(e) {
+      if(!isBirdRunning) return;
+      const rect = bCanvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
 
-    function animateBirds() {
-      const sky = document.getElementById('game-sky');
-      if(sky && isGameRunning) {
-        activeBirds.forEach((b, index) => {
-          b.y -= b.speed; b.el.style.top = `${b.y}px`;
-          if(b.y < -60) {
-            b.el.remove(); activeBirds.splice(index, 1);
-            birdStreak = 0; playSound('miss'); updateBirdStats();
+      let hitIdx = birds.findIndex(b => Math.hypot(b.x - clickX, b.y - clickY) <= b.radius + 10);
+      if(hitIdx !== -1) {
+        let hitBird = birds[hitIdx];
+        if(hitBird.correct) {
+          bScore += 100; playSound('hit'); confetti({ particleCount: 35, spread: 50, origin:{y:0.7} });
+          bCurrentQIdx++; loadBirdQuestion();
+        } else {
+          playSound('wrong'); bLives--; updateBirdUI();
+          if(bLives <= 0) {
+            isBirdRunning = false; clearInterval(birdLoop);
+            document.getElementById('bird-ov-title').innerText = "❌ Тоглоом дууслаа!";
+            document.getElementById('bird-ov-sub').innerText = `🏆 Цуглуулсан оноо: ${bScore}`;
+            document.getElementById('bird-overlay').style.display = 'flex';
           }
-        });
+        }
       }
-      requestAnimationFrame(animateBirds);
     }
-    requestAnimationFrame(animateBirds);
+
+    function updateBirdUI() {
+      document.getElementById('bird-score').innerText = bScore;
+      document.getElementById('bird-lives').innerText = '❤️'.repeat(bLives);
+    }
+
+    // GAME 2: QUIZ SNAKE ENGINE
+    const sCanvas = document.getElementById('snakeCanvas');
+    const sCtx = sCanvas.getContext('2d');
+    const sGrid = 20, sTileX = sCanvas.width / sGrid, sTileY = sCanvas.height / sGrid;
+    let snake = [{ x: 10, y: 10 }], sDx = 1, sDy = 0, sScore = 0, sLives = 3, snakeLoop = null, isSnakeRunning = false;
+    let sCurrentQIdx = 0, sFoods = [];
+    const sColors = ['#22c55e', '#38bdf8', '#ef4444', '#a855f7'];
+
+    function loadSnakeQuestion() {
+      if(snakeQuestions.length === 0) return;
+      const q = snakeQuestions[sCurrentQIdx % snakeQuestions.length];
+      document.getElementById('snake-q-text').innerText = `❓ ${q.q}`;
+      const legend = document.getElementById('snake-legend'); legend.innerHTML = ''; sFoods = [];
+
+      q.options.forEach((opt, idx) => {
+        let fX, fY;
+        while(true) {
+          fX = Math.floor(Math.random() * (sTileX - 4)) + 2; fY = Math.floor(Math.random() * (sTileY - 4)) + 2;
+          if(!snake.some(s => s.x === fX && s.y === fY)) break;
+        }
+        const color = sColors[idx % sColors.length];
+        sFoods.push({ x: fX, y: fY, text: opt.text, correct: opt.correct, color: color });
+        const item = document.createElement('div');
+        item.style.cssText = `font-size:0.9rem; font-weight:700; padding:5px 12px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid ${color};`;
+        item.innerHTML = `<span style="color:${color};">●</span> ${opt.text}`;
+        legend.appendChild(item);
+      });
+    }
+
+    function startSnakeGame() {
+      if(snakeQuestions.length === 0) return alert("Эхлээд могойн асуулт нэмнэ үү!");
+      snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }]; sDx = 1; sDy = 0; sScore = 0; sLives = 3; sCurrentQIdx = 0;
+      updateSnakeUI(); document.getElementById('snake-overlay').style.display = 'none';
+      loadSnakeQuestion(); isSnakeRunning = true;
+      if(snakeLoop) clearInterval(snakeLoop);
+      snakeLoop = setInterval(runSnakeLoop, 120);
+    }
+
+    function runSnakeLoop() {
+      if(!isSnakeRunning) return;
+      const head = { x: snake[0].x + sDx, y: snake[0].y + sDy };
+
+      if (head.x < 0) head.x = sTileX - 1; if (head.x >= sTileX) head.x = 0;
+      if (head.y < 0) head.y = sTileY - 1; if (head.y >= sTileY) head.y = 0;
+
+      if(snake.some(s => s.x === head.x && s.y === head.y)) {
+        handleSnakeWrongHit(); snake = [{ x: 10, y: 10 }]; sDx = 1; sDy = 0; return;
+      }
+
+      snake.unshift(head);
+      let eatenIdx = sFoods.findIndex(f => f.x === head.x && f.y === head.y);
+      if(eatenIdx !== -1) {
+        let food = sFoods[eatenIdx];
+        if(food.correct) {
+          sScore += 100; playSound('eat'); confetti({ particleCount: 35, spread: 50, origin:{y:0.7} });
+          sCurrentQIdx++; loadSnakeQuestion();
+        } else {
+          handleSnakeWrongHit(); sFoods.splice(eatenIdx, 1); snake.pop();
+        }
+      } else { snake.pop(); }
+
+      drawSnake();
+    }
+
+    function handleSnakeWrongHit() {
+      playSound('wrong'); sLives--; updateSnakeUI();
+      sCanvas.style.borderColor = 'var(--accent-red)';
+      setTimeout(() => sCanvas.style.borderColor = 'var(--border)', 250);
+
+      if(sLives <= 0) {
+        isSnakeRunning = false; clearInterval(snakeLoop);
+        document.getElementById('snake-ov-title').innerText = "❌ Тоглоом дууслаа!";
+        document.getElementById('snake-ov-sub').innerText = `🏆 Цуглуулсан оноо: ${sScore}`;
+        document.getElementById('snake-overlay').style.display = 'flex';
+      }
+    }
+
+    function updateSnakeUI() {
+      document.getElementById('snake-score').innerText = sScore;
+      document.getElementById('snake-lives').innerText = '❤️'.repeat(sLives);
+    }
+
+    function drawSnake() {
+      sCtx.fillStyle = '#020617'; sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      for(let i=0; i<sCanvas.width; i+=sGrid) { sCtx.beginPath(); sCtx.moveTo(i, 0); sCtx.lineTo(i, sCanvas.height); sCtx.stroke(); }
+      for(let j=0; j<sCanvas.height; j+=sGrid) { sCtx.beginPath(); sCtx.moveTo(0, j); sCtx.lineTo(sCanvas.width, j); sCtx.stroke(); }
+
+      snake.forEach((part, idx) => {
+        sCtx.fillStyle = idx === 0 ? '#22c55e' : '#16a34a';
+        sCtx.fillRect(part.x * sGrid + 1, part.y * sGrid + 1, sGrid - 2, sGrid - 2);
+      });
+
+      sFoods.forEach(f => {
+        sCtx.save(); sCtx.fillStyle = f.color; sCtx.shadowBlur = 10; sCtx.shadowColor = f.color;
+        sCtx.beginPath(); sCtx.arc(f.x * sGrid + sGrid/2, f.y * sGrid + sGrid/2, sGrid/2 - 2, 0, Math.PI * 2); sCtx.fill(); sCtx.restore();
+      });
+    }
+
+    function changeSnakeDir(dir) {
+      if(dir === 'UP' && sDy === 0) { sDx = 0; sDy = -1; }
+      if(dir === 'DOWN' && sDy === 0) { sDx = 0; sDy = 1; }
+      if(dir === 'LEFT' && sDx === 0) { sDx = -1; sDy = 0; }
+      if(dir === 'RIGHT' && sDx === 0) { sDx = 1; sDy = 0; }
+    }
 
     window.addEventListener('keydown', (e) => {
-      const birdTab = document.getElementById('tab-bird');
-      if(!birdTab || !birdTab.classList.contains('active') || !isGameRunning) return;
-      let pressedKey = e.key.toUpperCase();
-      const keyBadge = document.getElementById(`key-badge-${pressedKey}`);
-      if(keyBadge) {
-        keyBadge.classList.add('active-key');
-        setTimeout(() => keyBadge.classList.remove('active-key'), 200);
-      }
-      let hitIndex = activeBirds.findIndex(b => b.letter === pressedKey);
-      if(hitIndex !== -1) {
-        let hitBird = activeBirds[hitIndex];
-        hitBird.el.style.transform = 'scale(1.5)'; hitBird.el.innerText = '💥';
-        playSound('hit');
-        setTimeout(() => hitBird.el.remove(), 150);
-        activeBirds.splice(hitIndex, 1); birdScore += 10; birdStreak += 1;
-        updateBirdStats(); confetti({ particleCount: 15, spread: 40, origin: { y: 0.6 } });
-        spawnBird();
-      }
+      const tabSnake = document.getElementById('tab-snake');
+      if(!tabSnake || !tabSnake.classList.contains('active')) return;
+      if(e.key === 'ArrowUp' || e.key === 'w') changeSnakeDir('UP');
+      if(e.key === 'ArrowDown' || e.key === 's') changeSnakeDir('DOWN');
+      if(e.key === 'ArrowLeft' || e.key === 'a') changeSnakeDir('LEFT');
+      if(e.key === 'ArrowRight' || e.key === 'd') changeSnakeDir('RIGHT');
     });
 
-    function updateBirdStats() {
-      document.getElementById('bird-score').innerText = birdScore;
-      document.getElementById('bird-streak').innerText = birdStreak;
-    }
-
-    // --- MATCHING GAME ---
+    // MATCHING & WORDLE & SPEED QUIZ
     let selectedLeft = null, selectedRight = null;
     function initMatchingGame() {
-      const leftCol = document.getElementById('match-left');
-      const rightCol = document.getElementById('match-right');
+      const leftCol = document.getElementById('match-left'), rightCol = document.getElementById('match-right');
       leftCol.innerHTML = ''; rightCol.innerHTML = '';
-      if(matchPairs.length === 0) return;
-      let lefts = [...matchPairs].sort(() => Math.random() - 0.5);
-      let rights = [...matchPairs].sort(() => Math.random() - 0.5);
-
-      lefts.forEach((p) => {
-        let div = document.createElement('div');
-        div.className = 'match-card'; div.innerText = p.left;
-        div.onclick = () => selectMatch('left', p.left, div);
-        leftCol.appendChild(div);
+      [...matchPairs].sort(() => Math.random() - 0.5).forEach(p => {
+        let div = document.createElement('div'); div.className = 'match-card'; div.innerText = p.left;
+        div.onclick = () => selectMatch('left', p.left, div); leftCol.appendChild(div);
       });
-      rights.forEach((p) => {
-        let div = document.createElement('div');
-        div.className = 'match-card'; div.innerText = p.right;
-        div.onclick = () => selectMatch('right', p.right, div);
-        rightCol.appendChild(div);
+      [...matchPairs].sort(() => Math.random() - 0.5).forEach(p => {
+        let div = document.createElement('div'); div.className = 'match-card'; div.innerText = p.right;
+        div.onclick = () => selectMatch('right', p.right, div); rightCol.appendChild(div);
       });
     }
 
     function selectMatch(side, val, el) {
       if(el.classList.contains('matched')) return;
       playSound('spin');
-      if(side === 'left') {
-        document.querySelectorAll('#match-left .match-card').forEach(c => c.classList.remove('selected'));
-        selectedLeft = { val, el }; el.classList.add('selected');
-      } else {
-        document.querySelectorAll('#match-right .match-card').forEach(c => c.classList.remove('selected'));
-        selectedRight = { val, el }; el.classList.add('selected');
-      }
+      if(side === 'left') { document.querySelectorAll('#match-left .match-card').forEach(c => c.classList.remove('selected')); selectedLeft = { val, el }; el.classList.add('selected'); }
+      else { document.querySelectorAll('#match-right .match-card').forEach(c => c.classList.remove('selected')); selectedRight = { val, el }; el.classList.add('selected'); }
 
       if(selectedLeft && selectedRight) {
         let pair = matchPairs.find(p => p.left === selectedLeft.val);
-        if(pair && pair.right === selectedRight.val) {
-          selectedLeft.el.classList.add('matched'); selectedRight.el.classList.add('matched');
-          playSound('win'); confetti({ particleCount: 30, spread: 50 });
-        } else { playSound('miss'); }
+        if(pair && pair.right === selectedRight.val) { selectedLeft.el.classList.add('matched'); selectedRight.el.classList.add('matched'); playSound('win'); }
+        else playSound('miss');
         selectedLeft.el.classList.remove('selected'); selectedRight.el.classList.remove('selected');
         selectedLeft = null; selectedRight = null;
       }
     }
 
-    // --- WORDLE ---
     let currentWordObj, guessedLetters = [];
     function initWordGame() {
-      if(wordList.length === 0) return;
-      currentWordObj = wordList[Math.floor(Math.random() * wordList.length)];
-      guessedLetters = [];
-      document.getElementById('word-hint').innerText = "💡 Тайлбар: " + currentWordObj.hint;
-      updateWordDisplay(); renderKeyboard();
+      if(!wordList.length) return;
+      currentWordObj = wordList[Math.floor(Math.random() * wordList.length)]; guessedLetters = [];
+      document.getElementById('word-hint').innerText = "💡 " + currentWordObj.hint; updateWordDisplay(); renderKeyboard();
     }
-
     function updateWordDisplay() {
-      let display = "";
-      for(let char of currentWordObj.word.toUpperCase()) {
-        if(guessedLetters.includes(char)) display += char + " "; else display += "_ ";
-      }
+      let display = ""; for(let char of currentWordObj.word.toUpperCase()) { display += guessedLetters.includes(char) ? char + " " : "_ "; }
       document.getElementById('word-display').innerText = display;
-      if(!display.includes('_')) { playSound('win'); confetti({ particleCount: 100, spread: 70 }); }
+      if(!display.includes('_')) { playSound('win'); confetti({ particleCount: 80, spread: 70 }); }
     }
-
     function renderKeyboard() {
       const kb = document.getElementById('keyboard'); kb.innerHTML = '';
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('').forEach(let => {
-        let b = document.createElement('button');
-        b.className = 'key-btn'; b.innerText = let;
-        b.onclick = () => { guessedLetters.push(let); b.disabled = true; playSound('spin'); updateWordDisplay(); };
-        kb.appendChild(b);
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('').forEach(l => {
+        let b = document.createElement('button'); b.className = 'key-btn'; b.innerText = l;
+        b.onclick = () => { guessedLetters.push(l); b.disabled = true; playSound('spin'); updateWordDisplay(); }; kb.appendChild(b);
       });
     }
 
-    // --- SPEED QUIZ ---
     let quizIdx = 0, quizScore = 0, filteredQuizList = [];
     function initSpeedQuiz() { quizIdx = 0; quizScore = 0; filteredQuizList = getFilteredQuestions(); showQuizQuestion(); }
     function showQuizQuestion() {
-      if(filteredQuizList.length === 0) {
-        document.getElementById('quiz-question').innerText = "Энэ бүлэг сэдэвт асуулт одоогоор байхгүй байна!";
-        document.getElementById('quiz-options').innerHTML = '';
-        return;
-      }
       if(quizIdx >= filteredQuizList.length) {
-        document.getElementById('quiz-question').innerText = `🏆 Тоглоом дууслаа! Оноо: ${quizScore} / ${filteredQuizList.length}`;
+        document.getElementById('quiz-question').innerText = `🏆 Оноо: ${quizScore} / ${filteredQuizList.length}`;
         document.getElementById('quiz-options').innerHTML = `<button class="spin-btn" onclick="initSpeedQuiz()">Дахин тоглох</button>`;
-        playSound('win'); confetti({ particleCount: 100, spread: 80 });
-        return;
+        playSound('win'); return;
       }
       let q = filteredQuizList[quizIdx];
       document.getElementById('quiz-progress').innerText = `${quizIdx + 1}/${filteredQuizList.length}`;
-      document.getElementById('quiz-score').innerText = quizScore;
-      document.getElementById('quiz-question').innerText = q.q;
-
-      let choices = [q.a, "Буруу хариулт А", "Буруу хариулт Б", "Мэдэхгүй"].sort(() => Math.random() - 0.5);
+      document.getElementById('quiz-score').innerText = quizScore; document.getElementById('quiz-question').innerText = q.q;
+      let choices = [q.a, "Буруу 1", "Буруу 2", "Мэдэхгүй"].sort(() => Math.random() - 0.5);
       const optsDiv = document.getElementById('quiz-options'); optsDiv.innerHTML = '';
       choices.forEach(c => {
-        let b = document.createElement('button');
-        b.className = 'opt-btn'; b.innerText = c;
-        b.onclick = () => { 
-          if(c === q.a) { quizScore++; playSound('win'); } else { playSound('miss'); }
-          quizIdx++; showQuizQuestion(); 
-        };
+        let b = document.createElement('button'); b.className = 'opt-btn'; b.innerText = c;
+        b.onclick = () => { if(c === q.a) { quizScore++; playSound('win'); } else playSound('miss'); quizIdx++; showQuizQuestion(); };
         optsDiv.appendChild(b);
       });
     }
 
-    // --- ADMIN PANEL FUNCTIONS ---
+    // GENERAL NAVIGATION & ADMIN
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      
+      pageViewsMap[tabId] = (pageViewsMap[tabId] || 0) + 1;
+      localStorage.setItem('ict8_page_views', JSON.stringify(pageViewsMap));
+
+      if(event && event.target) {
+        event.target.classList.add('active');
+      }
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+
+      if(tabId === 'news') renderNews();
+      if(tabId === 'snake') drawSnake();
+      if(tabId === 'matching') initMatchingGame();
+      if(tabId === 'word') initWordGame();
+      if(tabId === 'speed') initSpeedQuiz();
+    }
+
+    function switchClass(cls) {
+      currentClass = cls; document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active'); document.getElementById('current-class-label').innerText = cls; resetStudents();
+    }
+
+    function renderCards() {
+      const container = document.getElementById('flashcard-container'); container.innerHTML = ''; updateCounters();
+      getFilteredQuestions().forEach((q) => {
+        const isAnswered = !activeQuestions.some(aq => aq.id === q.id);
+        const card = document.createElement('div'); card.className = `flashcard ${isAnswered ? 'answered' : ''}`;
+        card.innerHTML = `<div><div style="font-weight:800; color:var(--accent-blue);">Асуулт ${q.id}</div><div>${q.q}</div></div>`;
+        container.appendChild(card);
+      });
+    }
+
     function openAdmin() {
       if(prompt("Админ нууц үгээ оруулна уу:") === "1234") {
-        loadAdminStudents(); renderAdminTypingSettings(); renderAdminChapters(); renderAdminQuestions(); renderAdminMatching(); renderAdminWords();
+        renderReports(); loadAdminStudents(); renderAdminChapters(); renderAdminQuestions(); renderAdminNews(); renderAdminSnakeQuestions();
         document.getElementById('adminModal').classList.add('active');
-      } else { alert("Буруу код!"); }
+      } else alert("Буруу код!");
     }
     function closeAdmin() { document.getElementById('adminModal').classList.remove('active'); }
-
     function switchAdminSection(secId) {
       document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById(`admin-${secId}`).classList.add('active');
+      event.target.classList.add('active'); document.getElementById(`admin-${secId}`).classList.add('active');
+      if(secId === 'reports') renderReports();
     }
 
-    // CHAPTER MANAGEMENT
-    function renderAdminChapters() {
-      const container = document.getElementById('admin-chapters-list');
-      container.innerHTML = '';
-      const chapters = [...new Set(questions.map(q => q.chapter || "Бүлэг 1: Ерөнхий"))];
-
-      if(chapters.length === 0) {
-        container.innerHTML = `<div style="color:var(--text-muted)">Одоогоор ямар нэг бүлэг бүртгэгдээгүй байна.</div>`;
-        return;
-      }
-
-      chapters.forEach((ch) => {
-        const count = questions.filter(q => (q.chapter || "Бүлэг 1: Ерөнхий") === ch).length;
-        const div = document.createElement('div');
-        div.className = 'admin-item';
-        div.innerHTML = `
-          <div><b>📖 ${ch}</b> <span style="font-size:0.8rem; color:var(--text-muted)">(${count} асуулттай)</span></div>
-          <div style="display:flex; gap:6px;">
-            <button class="edit-btn" onclick="renameChapter('${ch}')">✏️ Нэр засах</button>
-            <button class="del-btn" onclick="deleteChapter('${ch}')">🗑️ Устгах</button>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function renameChapter(oldName) {
-      const newName = prompt(`"${oldName}" бүлгийн шинэ нэрийг оруулна уу:`, oldName);
-      if(!newName || newName.trim() === '' || newName === oldName) return;
-
-      questions.forEach(q => {
-        if((q.chapter || "Бүлэг 1: Ерөнхий") === oldName) {
-          q.chapter = newName.trim();
-        }
-      });
-
-      localStorage.setItem('ict8_questions', JSON.stringify(questions));
-      populateChapterDropdown();
-      resetQuestions();
-      renderAdminChapters();
-      renderAdminQuestions();
-      alert("Бүлгийн нэр амжилттай шинэчлэгдлээ!");
-    }
-
-    function deleteChapter(chapterName) {
-      if(confirm(`"${chapterName}" бүлгийг доторх бүх асуултуудтай нь хамт устгах уу?`)) {
-        questions = questions.filter(q => (q.chapter || "Бүлэг 1: Ерөнхий") !== chapterName);
-        localStorage.setItem('ict8_questions', JSON.stringify(questions));
-        if(currentChapterFilter === chapterName) currentChapterFilter = 'ALL';
-        populateChapterDropdown();
-        resetQuestions();
-        renderAdminChapters();
-        renderAdminQuestions();
-        alert("Бүлэг амжилттай устгагдлаа!");
-      }
-    }
-
-    // Typing Admin Settings
-    function renderAdminTypingSettings() {
-      document.getElementById('admin-typing-input').value = homeRowLetters.join(" ");
-      document.getElementById('admin-timer-input').value = gameTimerDuration;
-    }
-    function saveTypingSettings() {
-      let val = document.getElementById('admin-typing-input').value.trim();
-      let timerVal = parseInt(document.getElementById('admin-timer-input').value);
-      if(!val) return alert("Үсгүүдээ бичнэ үү!");
-      if(isNaN(timerVal) || timerVal < 5) return alert("Зөв хугацаа оруулна уу!");
-
-      homeRowLetters = val.replace(/,/g, ' ').split(/\s+/).map(l => l.toUpperCase()).filter(l => l.length > 0);
-      gameTimerDuration = timerVal;
-
-      localStorage.setItem('ict8_typing_letters', JSON.stringify(homeRowLetters));
-      localStorage.setItem('ict8_timer_duration', JSON.stringify(gameTimerDuration));
-      document.getElementById('bird-timer').innerText = gameTimerDuration;
-      renderHomeRowGuides(); alert("Тохиргоо хадгалагдлаа!");
-    }
-    function setTypingPreset(preset) {
-      if(preset === 'home') homeRowLetters = ['Й', 'Ы', 'Б', 'Ө', 'А', 'Х', 'Р', 'О', 'Л', 'Д'];
-      if(preset === 'top') homeRowLetters = ['Й', 'Ы', 'Б', 'Ө', 'А', 'Х', 'Р', 'О', 'Л', 'Д', 'Ф', 'Ц', 'У', 'Ж', 'Э', 'Н', 'Г', 'Ш', 'Ү', 'З', 'К'];
-      if(preset === 'all') homeRowLetters = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','Ө','П','Р','С','Т','У','Ү','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я'];
-      renderAdminTypingSettings();
-    }
-
-    // Students Admin
     function loadAdminStudents() {
       const cls = document.getElementById('admin-class-select').value;
       document.getElementById('admin-student-list').value = students[cls] ? students[cls].join(", ") : "";
@@ -1348,27 +1413,86 @@
     function saveStudents() {
       const cls = document.getElementById('admin-class-select').value;
       students[cls] = document.getElementById('admin-student-list').value.split(',').map(s=>s.trim()).filter(s=>s.length);
-      localStorage.setItem('ict8_students', JSON.stringify(students));
-      resetStudents(); alert("Сурагчид хадгалагдлаа!");
+      localStorage.setItem('ict8_students', JSON.stringify(students)); resetStudents(); alert("Сурагчид хадгалагдлаа!");
     }
 
-    // Questions Admin
+    function renderAdminChapters() {
+      const container = document.getElementById('admin-chapters-list'); container.innerHTML = '';
+      [...new Set(questions.map(q => q.chapter || "Бүлэг 1: Ерөнхий"))].forEach(ch => {
+        container.innerHTML += `<div class="admin-item"><b>📖 ${ch}</b></div>`;
+      });
+    }
+
+    // ADMIN NEWS MANAGEMENT
+    function addNews() {
+      const title = document.getElementById('new-n-title').value.trim();
+      const imgUrl = document.getElementById('new-n-img').value.trim();
+      const videoUrl = document.getElementById('new-n-url').value.trim();
+      const body = document.getElementById('new-n-body').value.trim();
+      const date = new Date().toISOString().split('T')[0];
+
+      if(!title || !body) return alert("Гарчиг болон Агуулга заавал шаардлагатай!");
+      news.unshift({ id: Date.now(), date, title, imgUrl, videoUrl, body });
+      localStorage.setItem('ict8_news', JSON.stringify(news));
+      document.getElementById('new-n-title').value = ''; 
+      document.getElementById('new-n-img').value = ''; 
+      document.getElementById('new-n-url').value = ''; 
+      document.getElementById('new-n-body').value = '';
+      renderAdminNews(); renderNews(); alert("Мэдээ хадгалагдлаа!");
+    }
+
+    function renderAdminNews() {
+      const div = document.getElementById('admin-news-list'); div.innerHTML = '';
+      news.forEach((n) => {
+        div.innerHTML += `
+          <div class="admin-item">
+            <div style="flex:1;">
+              <b>📰 ${n.title}</b> (${n.date})<br>
+              <span style="font-size:0.8rem; color:var(--text-muted);">${n.body.substring(0, 40)}...</span>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button class="edit-btn" onclick="editNews(${n.id})">✏️ Засах</button>
+              <button class="del-btn" onclick="deleteNews(${n.id})">Устгах</button>
+            </div>
+          </div>`;
+      });
+    }
+
+    function editNews(id) {
+      let item = news.find(n => n.id === id);
+      if(!item) return;
+      let newTitle = prompt("Мэдээний гарчиг:", item.title);
+      if(newTitle === null) return;
+      let newImg = prompt("Зургийн линк URL:", item.imgUrl || "");
+      if(newImg === null) return;
+      let newVideo = prompt("YouTube бичлэгийн линк URL:", item.videoUrl || "");
+      if(newVideo === null) return;
+      let newBody = prompt("Мэдээний эх текст:", item.body);
+      if(newBody === null) return;
+
+      item.title = newTitle.trim() || item.title;
+      item.imgUrl = newImg.trim();
+      item.videoUrl = newVideo.trim();
+      item.body = newBody.trim() || item.body;
+
+      localStorage.setItem('ict8_news', JSON.stringify(news));
+      renderAdminNews(); renderNews(); alert("Мэдээ амжилттай засагдлаа!");
+    }
+
+    function deleteNews(id) {
+      news = news.filter(n => n.id !== id); localStorage.setItem('ict8_news', JSON.stringify(news)); renderAdminNews(); renderNews();
+    }
+
+    // ADMIN QUESTIONS MANAGEMENT
     function addQuestion() {
       let qCh = document.getElementById('new-q-chapter').value.trim() || "Бүлэг 1: Ерөнхий";
       let qText = document.getElementById('new-q-text').value.trim();
       let qAns = document.getElementById('new-q-ans').value.trim();
+      const today = new Date().toISOString().split('T')[0];
       if(!qText || !qAns) return alert("Бөглөнө үү!");
-
-      questions.push({ id: questions.length + 1, chapter: qCh, q: qText, a: qAns });
-      localStorage.setItem('ict8_questions', JSON.stringify(questions));
-      
-      populateChapterDropdown();
-      resetQuestions();
-      renderAdminChapters();
-      renderAdminQuestions();
-      
-      document.getElementById('new-q-text').value = '';
-      document.getElementById('new-q-ans').value = '';
+      questions.push({ id: questions.length + 1, createdDate: today, chapter: qCh, q: qText, a: qAns });
+      localStorage.setItem('ict8_questions', JSON.stringify(questions)); populateChapterDropdown(); resetQuestions(); renderAdminQuestions();
+      document.getElementById('new-q-text').value = ''; document.getElementById('new-q-ans').value = '';
     }
 
     function renderAdminQuestions() {
@@ -1376,78 +1500,77 @@
       questions.forEach((q, i) => {
         div.innerHTML += `
           <div class="admin-item">
-            <span><b>[${q.chapter || 'Ерөнхий'}] Q${i+1}:</b> ${q.q}</span>
-            <button class="del-btn" onclick="deleteQ(${q.id})">Устгах</button>
-          </div>
-        `;
+            <div style="flex:1;">
+              <span style="color:var(--accent-blue); font-size:0.8rem; font-weight:700;">[${q.chapter || 'Ерөнхий'}]</span> 
+              <span style="color:var(--accent-yellow); font-size:0.75rem;">(${q.createdDate || 'Огноогүй'})</span><br>
+              <b>Q${i+1}:</b> ${q.q}<br>
+              <span style="color:var(--accent-green); font-size:0.85rem;">Зөв хариулт: ${q.a}</span>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button class="edit-btn" onclick="editQuestion(${q.id})">✏️ Засах</button>
+              <button class="del-btn" onclick="deleteQ(${q.id})">Устгах</button>
+            </div>
+          </div>`;
       });
     }
 
-    function deleteQ(id) {
-      questions = questions.filter(q => q.id !== id);
+    function editQuestion(id) {
+      let qItem = questions.find(item => item.id === id);
+      if(!qItem) return;
+      let newChapter = prompt("Бүлэг сэдэв:", qItem.chapter || "");
+      if(newChapter === null) return;
+      let newQ = prompt("Асуултын бичвэр:", qItem.q);
+      if(newQ === null) return;
+      let newA = prompt("Зөв хариулт:", qItem.a);
+      if(newA === null) return;
+
+      qItem.chapter = newChapter.trim() || qItem.chapter;
+      qItem.q = newQ.trim() || qItem.q;
+      qItem.a = newA.trim() || qItem.a;
+
       localStorage.setItem('ict8_questions', JSON.stringify(questions));
       populateChapterDropdown();
       resetQuestions();
-      renderAdminChapters();
       renderAdminQuestions();
+      alert("Асуулт амжилттай засагдлаа!");
     }
 
-    function deleteAllQuestions() {
-      if(confirm("Бүх асуултыг устгах уу?")) {
-        questions = [];
-        localStorage.setItem('ict8_questions', JSON.stringify(questions));
-        populateChapterDropdown();
-        resetQuestions();
-        renderAdminChapters();
-        renderAdminQuestions();
-      }
+    function deleteQ(id) { questions = questions.filter(q => q.id !== id); localStorage.setItem('ict8_questions', JSON.stringify(questions)); populateChapterDropdown(); resetQuestions(); renderAdminQuestions(); }
+
+    // GAME QUESTIONS MANAGEMENT
+    function addSnakeQuestion() {
+      const qText = document.getElementById('new-sq-text').value.trim();
+      const opt0 = document.getElementById('sq-opt-0').value.trim();
+      const opt1 = document.getElementById('sq-opt-1').value.trim();
+      const opt2 = document.getElementById('sq-opt-2').value.trim();
+      const correctIdx = parseInt(document.querySelector('input[name="sqCorrect"]:checked').value);
+
+      if(!qText || !opt0 || !opt1 || !opt2) return alert("Бүх талбарыг бөглөнө үү!");
+      snakeQuestions.push({
+        q: qText,
+        options: [{ text: opt0, correct: correctIdx === 0 }, { text: opt1, correct: correctIdx === 1 }, { text: opt2, correct: correctIdx === 2 }]
+      });
+      localStorage.setItem('ict8_snake_questions', JSON.stringify(snakeQuestions));
+      document.getElementById('new-sq-text').value = ''; document.getElementById('sq-opt-0').value = ''; document.getElementById('sq-opt-1').value = ''; document.getElementById('sq-opt-2').value = '';
+      renderAdminSnakeQuestions(); alert("Тоглоомын асуулт хадгалагдлаа!");
     }
 
-    // Matching Admin
-    function addMatchPair() {
-      let l = document.getElementById('new-m-left').value.trim();
-      let r = document.getElementById('new-m-right').value.trim();
-      if(!l || !r) return alert("Бөглөнө үү!");
-      matchPairs.push({ left: l, right: r });
-      localStorage.setItem('ict8_match_pairs', JSON.stringify(matchPairs));
-      renderAdminMatching();
-      document.getElementById('new-m-left').value = ''; document.getElementById('new-m-right').value = '';
-    }
-    function renderAdminMatching() {
-      const div = document.getElementById('admin-matching-list'); div.innerHTML = '';
-      matchPairs.forEach((p, i) => {
-        div.innerHTML += `<div class="admin-item"><span><b>${p.left}</b> ➔ ${p.right}</span><button class="del-btn" onclick="deleteMatchPair(${i})">Устгах</button></div>`;
+    function renderAdminSnakeQuestions() {
+      const div = document.getElementById('admin-snake-list'); div.innerHTML = '';
+      snakeQuestions.forEach((sq, i) => {
+        const correctOpt = sq.options.find(o => o.correct);
+        div.innerHTML += `<div class="admin-item"><div><b>${i+1}. ${sq.q}</b><div style="font-size:0.8rem; color:var(--accent-green);">Зөв: ${correctOpt ? correctOpt.text : ''}</div></div><button class="del-btn" onclick="deleteSnakeQ(${i})">Устгах</button></div>`;
       });
     }
-    function deleteMatchPair(idx) {
-      matchPairs.splice(idx, 1); localStorage.setItem('ict8_match_pairs', JSON.stringify(matchPairs)); renderAdminMatching();
-    }
 
-    // Wordle Admin
-    function addWordPair() {
-      let w = document.getElementById('new-w-word').value.trim().toUpperCase();
-      let h = document.getElementById('new-w-hint').value.trim();
-      if(!w || !h) return alert("Бөглөнө үү!");
-      wordList.push({ word: w, hint: h });
-      localStorage.setItem('ict8_word_list', JSON.stringify(wordList));
-      renderAdminWords();
-      document.getElementById('new-w-word').value = ''; document.getElementById('new-w-hint').value = '';
-    }
-    function renderAdminWords() {
-      const div = document.getElementById('admin-word-list'); div.innerHTML = '';
-      wordList.forEach((w, i) => {
-        div.innerHTML += `<div class="admin-item"><span><b>${w.word}</b> (${w.hint})</span><button class="del-btn" onclick="deleteWordPair(${i})">Устгах</button></div>`;
-      });
-    }
-    function deleteWordPair(idx) {
-      wordList.splice(idx, 1); localStorage.setItem('ict8_word_list', JSON.stringify(wordList)); renderAdminWords();
-    }
+    function deleteSnakeQ(idx) { snakeQuestions.splice(idx, 1); localStorage.setItem('ict8_snake_questions', JSON.stringify(snakeQuestions)); renderAdminSnakeQuestions(); }
 
-    // Init Page
+    // INIT PAGE
     changeTheme(currentTheme);
     populateChapterDropdown();
     resetStudents();
     resetQuestions();
+    renderNews();
   </script>
 </body>
 </html>
